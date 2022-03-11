@@ -1,0 +1,293 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'IBM Plex Sans', sans-serif;
+    padding-bottom: 50px;
+}
+
+header {
+    padding-top: 80px;
+    padding-bottom: 40px;
+    background: #87c0b650;
+}
+
+section {
+    padding: 0px 30px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+hr {
+    margin: 60px 0;
+    border-top: 2px solid #b1b1b1;
+}
+
+p {
+    line-height: 28px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+    margin: 0;
+}
+
+h1 {
+    font-size: 36px;
+    font-weight: 600;
+    margin-top: 75px;
+}
+
+h2 {
+    font-size: 24px;
+    font-weight: 700;
+    margin-top: 50px;
+}
+
+h3 {
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: 18px;
+    font-weight: 600;
+    margin-top: 24px;
+}
+
+blockquote {
+    margin-left: 0;
+    padding-left: 20px;
+    border-left: 3px solid black;
+    font-size: 18px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+    line-height: 1.8;
+}
+
+code {
+    position: relative;
+    background-color: #f3f6f6 !important;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+pre {
+    display: flex;
+}
+
+pre code {
+    font-size: 16px;
+    padding: 0px 20px !important;
+    border-radius: 15px;
+    min-width: 200px;
+}
+
+pre code[title],pre code[language] {
+    padding-top: 20px !important;
+}
+
+code[title]::before,code[language]::after {
+    font-family: "IBM Plex Sans", sans-serif;
+    font-weight: 900;
+    font-size: small;
+    color: #7a7a7a;
+}
+
+code[title]::before {
+    content: attr(title);
+    user-select: none;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+}
+
+code[language]::after {
+    content: attr(language);
+    user-select: none;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+code[language*="JS"],code[language*="js"] {
+    border: 2px solid #e6e470;
+}
+
+code[language*="JS"]::after,code[language*="js"]::after {
+    text-transform: uppercase;
+    color: #e6e470;
+}
+
+code[language*="CSS"],code[language*="css"] {
+    border: 2px solid #70bbe6;
+}
+
+code[language*="CSS"]::after,code[language*="css"]::after {
+    text-transform: uppercase;
+    color: #70bbe6;
+}
+
+code[language*="HTML"],code[language*="html"] {
+    border: 2px solid #e68c70;
+}
+
+code[language*="HTML"]::after,code[language*="html"]::after {
+    text-transform: uppercase;
+    color: #e68c70;
+}
+
+pre.full {
+    width: 100%;
+}
+
+pre.full code {
+    width: 100%;
+}
+
+li {
+    margin: 8px 0;
+}
+
+aside {
+    float: right;
+    max-width: 50vw;
+    margin-left: 30px;
+}
+
+img {
+    border-radius: 15px;
+    width: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    text-align: left;
+}
+
+td {
+    padding: 10px 0;
+}
+
+th {
+    padding-right: 20px;
+    padding-bottom: 5px;
+}
+
+tr {
+    border-bottom: 1px solid #b1b1b1;
+    padding-bottom: 10px;
+}
+
+/* Code Snippets */
+
+.snippetresult {
+    margin-top: 30px;
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-areas:
+    "header header"
+    "code result";
+    column-gap: 40px;
+    row-gap: 10px;
+    align-items: center;
+    max-width: 100%;
+}
+
+.snippetresult > h3 {
+    margin: 0;
+    font-size: 14px;
+}
+
+/* Callouts */
+
+.callout.info, .callout.warning, .callout.success {
+    display: flex;
+    align-items: center;
+    padding: 5px;
+    margin: 25px 0px;
+    border-radius: 15px;
+    font-weight: 600;
+}
+
+.callout:before {
+    width: 48px;
+    height: 48px;
+    display: inline-block;
+    content: '';
+    -webkit-mask-size: cover;
+    mask-size: cover;
+    margin-right: 10px;
+}
+
+.callout.info {
+    border: 2px solid #5da0fd;
+    background-color: #5ea0fd20;
+    color: #2d5286;
+}
+
+
+.callout.info:before {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M11 7h2v2h-2zm0 4h2v6h-2zm1-9C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+    background-color: #2d5286;
+}
+
+.callout.warning {
+    border: 2px solid #FFCB77;
+    background-color: #FFCB7720;
+    color: #86642d;
+}
+
+.callout.warning:before {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+    background-color: #86642d;
+}
+
+.callout.success {
+    border: 2px solid #87C0B6;
+    background-color: #87C0B620;
+    color: #3e756a;
+}
+
+.callout.success:before {
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M22,5.18L10.59,16.6l-4.24-4.24l1.41-1.41l2.83,2.83l10-10L22,5.18z M19.79,10.22C19.92,10.79,20,11.39,20,12 c0,4.42-3.58,8-8,8s-8-3.58-8-8c0-4.42,3.58-8,8-8c1.58,0,3.04,0.46,4.28,1.25l1.44-1.44C16.1,2.67,14.13,2,12,2C6.48,2,2,6.48,2,12 c0,5.52,4.48,10,10,10s10-4.48,10-10c0-1.19-0.22-2.33-0.6-3.39L19.79,10.22z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' enable-background='new 0 0 24 24' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Crect fill='none' height='24' width='24'/%3E%3Cpath d='M22,5.18L10.59,16.6l-4.24-4.24l1.41-1.41l2.83,2.83l10-10L22,5.18z M19.79,10.22C19.92,10.79,20,11.39,20,12 c0,4.42-3.58,8-8,8s-8-3.58-8-8c0-4.42,3.58-8,8-8c1.58,0,3.04,0.46,4.28,1.25l1.44-1.44C16.1,2.67,14.13,2,12,2C6.48,2,2,6.48,2,12 c0,5.52,4.48,10,10,10s10-4.48,10-10c0-1.19-0.22-2.33-0.6-3.39L19.79,10.22z'/%3E%3C/svg%3E") no-repeat 50% 50%;
+    background-color: #3e756a;
+}
+
+.callout b { /* 乇乂丅尺卂 丅卄工匚匚 */
+    font-weight: 900;
+}
+
+details > summary {
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 2px solid #5da0fd;
+    background-color: #5ea0fd20;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+details > summary + .content {
+    padding: 15px 20px;
+    border-radius: 10px;
+    border: 2px solid #eceeee;
+}
+
+/* PDF Export */
+
+@media print {
+    pre {
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+    }
+
+    header {
+        border-radius: 15px;
+    }
+
+    details > summary {
+        display: none;
+    }
+
+}

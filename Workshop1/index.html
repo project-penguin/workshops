@@ -1,0 +1,845 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workshop 1 - Introduction to HTML & CSS</title>
+    <link rel="stylesheet" href="../utils/style.css" />
+    <link rel="stylesheet" href="../utils/lib/highlight.min.css" />
+
+    <!-- Uncomment me for some colourful fun :) -->
+    <!-- <link rel="stylesheet" href="../utils/lib/gradient.min.css">  -->
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>Workshop 1 - Introduction to HTML & CSS</h1>
+        <blockquote>
+          Goal: learn about HTML & CSS and create your first web page!
+        </blockquote>
+      </section>
+    </header>
+
+    <!-- Introduction -->
+    <section>
+      <h2>Introduction</h2>
+      <h3>HTML....? CSS....? Whaaaat? </h3>
+      <p>
+        HTML stands for <b>H</b>yper <b>T</b>ext <b>M</b>arkup <b>L</b>anguage,
+        and it's the standard programming language used to create web pages.
+        CSS stands for <b>C</b>ascading <b>S</b>tyle <b>S</b>heet, and it describes how HTML elements should be displayed on a page.
+      </p>
+      <p>
+        With HTML you define the <em>content</em> to show on the page, and with CSS you <em>style</em> that content
+        to make it look good.
+      </p>
+
+      <h3>Why should you care?</h3>
+      <p>
+        Every website on the Internet is made using HTML and styled using CSS. Even this runsheet was made
+        using HTML!
+      </p>
+
+      <h2>Prerequisites</h2>
+      <h3>Things you need before you start this runsheet:</h3>
+      <ul>
+        <li>
+          <a
+            href="https://code.visualstudio.com/"
+            title="You should already have this"
+            >Visual Studio Code</a
+          >
+          installed and configured.
+        </li>
+        <li>
+          A sense of adventure!
+        </li>
+      </ul>
+      <p>
+        <b
+          >If you need help with the prerequisites - any of the facilitators are
+          happy to help!</b
+        >
+      </p>
+
+      <h2>Objectives</h2>
+      <h3>What will we do today?</h3>
+      We will be creating and styling a complete HTML page that will act as the base for a digital storefront. 
+      <p>By the end of this Workshop, you will:</p>
+      <ul>
+        <li>
+          Be able to define HTML & CSS
+        </li>
+        <li>
+          Be able to use several HTML tags appropriately
+        </li>
+        <li>
+          Be able to use CSS to style HTML elements
+        </li>
+        <li>
+          Have constructed your own <i>Store</i> webpage
+        </li>
+      </ul>
+
+      <h2>Cool things HTML can do:</h2>
+      <ul>
+        <li>Display text & images</li>
+        <li>Play audio & video</li>
+        <li>Create tables</li>
+        <li>Include other HTML pages using <code>iframe</code> element</li>
+        <li>
+          Make text <i>italic</i>, <strong>bold</strong>, <u>underlined</u> or
+          <del>striked-through</del>
+        </li>
+      </ul>
+
+      <h2>Cool things CSS can do:</h2>
+      <ul>
+        <li>Make webpages look presentable</li>
+        <li>
+          Control <span style="font-size:24px">text size</span>,
+          <span style="font-family:cursive">fonts</span>
+          and <span style="color: blueviolet;">colours</span></li>
+        <li>Change the <span style="padding:10px;">spacing</span> between elements</li>
+        <li>Interactions like hover effects</li>
+        <li>Animations</li>
+      </ul>
+
+      <hr />
+
+    </section>
+
+    <section>
+      <h1>Level 0 - Understanding Web Pages</h1>
+      <h2 id="basic-structure">Basic Web Page Structure</h2>
+      <p>Every web page is made of <strong>elements</strong> that contain information.
+      <p>An element consists of:</p>
+      <ul>
+        <li>An <strong>opening tag</strong>, e.g. <code>&lt;title&gt;</code>. This specifies what <em>type</em> of element it is.</li>
+        <li>The <strong>content</strong>, which can be either plain text, or other elements (this is called <strong>nesting</strong>).</li>
+        <li>A <strong>closing tag</strong>, e.g. <code>&lt;/title&gt;</code>. This is the same as the opening tag except with an added '/'.</li>
+      </ul>
+
+      <p class="callout info">
+        A tag looks like a word with angle brackets around it, for example: <code>&lt;title&gt;</code>.</p>
+      </p>
+
+      <p>The example below shows the basic skeleton of a HTML page. As you can see, it is made up of many nested HTML elements.
+      Read the comments (the grey text) to see the purpose of each element.</p>
+
+      <!-- Code Block -->
+      <pre class="full"><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+        &lt;!--
+            The `head` tag is used for storing "invisible to the
+            user/visitor" content. This content may include the 
+            page title, references to CSS and Javascript files, 
+            and tags which Search Engines use to identify your 
+            page and its contents.
+        --&gt;
+        &lt;title&gt;Workshop 1 - Learning HTML&lt;/title&gt;
+    &lt;/head&gt;
+    &lt;body&gt;
+        &lt;!--
+            The `body` tag is used for the content that is, in most 
+            cases, visible to users. This content may include text,
+            links, images, tables and much much more. Try it out!
+        --&gt;
+        &lt;footer&gt;
+            &lt;!--
+                The `footer` tag is rarely used in HTML. The tag is 
+                usually located at the very bottom of the `body`, 
+                and includes useful links and copyright information.
+            --&gt;
+        &lt;/footer&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+      </code></pre>
+      <!-- End Code Block -->
+      <p class="callout info">
+        You may notice an odd looking tag: &lt;!-- --&gt;. This is a comment block. Anything within these two tags will not do anything.
+      </p>
+
+      <h2>View Source</h2>
+      <p>
+        To see the HTML of any website that you're on, you can right-click anywhere on the page and select <strong>View page source</strong>
+        from the drop-down menu. As this runsheet is a website, you can try it out right here!
+      </p>
+
+      <p>
+        Did you know you can also <i>change</i> any website that you visit? Of course, the changes will only be visible
+        on your own device and not anywhere else. Right-click on this page and press <strong>Inspect</strong>. Now you can
+        not only <i>see</i> the HTML and CSS, but also edit it and see the effects straight away!
+      </p>
+
+      <img src="images/view_source.png" style="width:40%;" />
+    </section>
+
+    <section>
+      <h1>Level 1 - Setup</h1>
+
+      <h3>Step 1 - Create your workspace</h3>
+      <p>
+        In your file explorer, create a <strong>new folder</strong> where you would like all your work to go. Make sure to give it a
+        meaningful name, such as My Website or the name that you would like your store to have.
+      </p>
+
+      <h3>Step 2 - Setup your Project in Visual Studio Code (VS Code)</h3>
+      <p>Open up VS Code, it should look like the image below:</p>
+      <img src="./images/vs_code_1.PNG" />
+      <p>
+        From the top-left menu select <strong>File » Open Folder...</strong> and choose the folder that you just made.
+      </p>
+
+      <h3>Step 3 - Create your <strong>HTML</strong> file</h3>
+      <p>
+        From the top-left menu select <strong>File » New File...</strong> and a new page should open in the window.
+      </p>
+      <p>Next we need to tell VS Code what type of file and code we'll be using by adding the following to the top of the New File opened in Step 1.
+        <pre class="full"><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+
+&lt;/html&gt;
+        </code></pre>
+
+      <p>Finally, we need to save this file so we can keep working on it over the next few workshops.
+        Click on <strong>File » Save As..</strong>, change the file name to <code>index.html</code> and
+        save it on your computer.</p>
+
+      <p>Your screen should now look like this:</p>
+
+      <img src="./images/vs_code_2.PNG" />
+
+      <h3>Step 4 - Create your <strong>CSS</strong> file</h3>
+      <p>We also need to create a <strong>CSS</strong> file so that we can style our webpage. Follow Step 2 above to
+      create a file called <code>style.css</code>, but leave the file empty.</p>
+
+      <img src="./images/vs_code_3.PNG" />
+
+      <h3>Step 5 - Setup your Internet Browser</h3>
+      <p>
+        You will need to open up <code>index.html</code> in your browser. To do
+        this, double click on the <code>index.html</code> file using file explorer and it should open
+        up in your default browser.
+      </p>
+      <p class="callout info">
+        From inside VS Code, right click on <code>index.html</code> and select "Reveal in File Explorer" to quickly navigate to a file.
+      </p>
+      <p>As your website is still empty, it should look like the image below:</p>
+      <img src="./images/web_browser.PNG" alt="" />
+
+      <p class="callout success">
+        Congratulations! You leveled up to level 2. Your workstation is ready to go &#128187;
+      </p>
+      <p class="callout info">
+        Fun Fact: the HTML code for a laptop emoji is &amp#128187;
+        <br/>
+        You can copy this into your HTML to show it on the page!
+      </p>
+    </section>
+
+<!--TO DO SECTIONS:
+Icon / Initial block row with Shop Name
+Hero Banner
+About the Shop text block
+Extensions-->   
+
+    <section>
+      <h1>Building Your Website</h1>
+      <h2>Level 2 - Head (and Body)</h2>
+      <p>
+        For these exercises you'll be editing the <code>index.html</code> you created.
+      </p>
+      <p>
+        We'll provide example code for each step, but feel free to change things
+        to whatever you want. It's your website after all.
+      </p>
+
+      <h3>Head and Body</h3>
+      <p>
+        As we saw <a href="#basic-structure">previously</a>, a HTML document has both a head and a body, just like you (hopefully)!
+        Let's start by adding tags for the head and body to create our basic skeleton. Your file should look like this:
+      </p>
+
+      <div class="snippetresult">
+        <pre><code class="html">
+&lt;!DOCTYPE html&gt;
+&lt;html&gt;
+    &lt;head&gt;
+    &lt;/head&gt;
+
+    &lt;body&gt;
+    &lt;/body&gt;
+&lt;/html&gt;
+        </code></pre>
+      </div>
+
+      <p class="callout info">
+        Indentation is very important for readability of your code! Any element that is inside another element (called a
+        child element) should be indented once in relation to its parent element. You do this by pressing the `tab` key on your
+        keyboard when starting a new line.
+      </p>
+
+      <h3>Stylesheet link</h3>
+      
+      <p>Remember the CSS file you created before? We need to tell our HTML page where to find it.</p>
+
+      <p>In between the <code>&lt;head&gt;</code> tags, add a new line and add a <code>&lt;link&gt;</code> tag as shown below.</p>
+
+      <pre class="html"><code>
+...
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="style.css"&gt;
+    &lt;/head&gt;
+...
+      </code></pre>
+
+      <p class="callout info">
+        Note that the tag has two attributes: 'rel' defines what type of document is being linked,
+        and 'href' gives the file location.
+      </p>
+
+      <p class="callout info">
+        Note that the link element doesn't have a closing tag. This is because it doesn't need any content. This type of element
+        is called an empty element.
+      </p>
+
+      <h3>Title</h3>
+
+      <p>
+        The title of a webpage is what is shown in the browser window or tab at the top of your screen. It's not shown on
+        the page itself, which is why it goes in the <code>&lt;head&gt;</code> instead of <code>&lt;body&gt;</code>.
+        What is the title of the webpage you are on right now?
+      </p>
+      
+      <details>
+        <summary>Click here for the answer</summary>
+        <div class="content">
+          <p>Workshop 1 - Introduction to HTML & CSS</p>
+        </div>
+      </details>
+      
+      <p>
+        Let's add a title to our page. After the <code>&lt;link&gt;</code> tag, add a new line and add
+        <code>&lt;title&gt;</code> tags. In between the tags, put whatever you would like the title to be,
+        e.g. Shop.
+      </p>
+
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+          <pre><code class="html">
+...
+    &lt;head&gt;
+        &lt;link rel="stylesheet" href="style.css"&gt;
+        &lt;title&gt;Shop&lt;/title&gt;
+    &lt;/head&gt;
+...
+          </code></pre>
+        </div>
+        <h3>Result</h3>
+        <div>
+          <img src="./images/shop_title.png" alt="" />
+        </div>
+      </div>
+
+      <p>
+        Save the document and refresh your browser. Notice that
+        the title of your tab has changed! Whenever you make changes
+        to your code, make sure to save and refresh your browser for your
+        changes to be applied.
+      </p>
+
+      <p>
+        Well done, our head section is now complete!
+      </p>
+
+      <p class="callout warning">
+        Make sure you frequently save your work and refresh your browser so your changes appear. 
+      </p>
+
+      <p class="callout success">
+        Congratulations! You leveled up to level 3. You've sure got your head screwed on right.
+      </p>
+
+      <h2>Level 3 - The Nav</h2>
+      <p>
+        Now we want to move onto the <code>&lt;body&gt;</code>, where we can make our navigation bar. We can do this using the <code>&lt;nav&gt;</code> tag.
+      </p>
+      <p>
+        When we open our <code>&lt;nav&gt;</code>, we want to put our shop's name inside. For this example, we'll go with 'ShopInc', but you can call this website whatever you want.
+      </p>
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+          <pre class="html"><code title="index.html" language="HTML">
+&lt;body&gt;
+    &lt;nav&gt;
+        &lt;h1&gt;ShopInc&lt;/h1&gt;
+    &lt;/nav&gt;        
+          </pre></code>
+        </div>
+        <h3>Result</h3>
+        <div>
+          <img src="./images/nav_html.PNG" alt="nav html" style="width:50%;"/>
+        </div>
+      </div>
+      <p>
+        Above you can see we are using <code>&lt;h1&gt;</code>, which is 'Heading 1'. Headings can go from <code>&lt;h1&gt;</code> up to <code>&lt;h6&gt;</code>. The higher the number is, the smaller the heading is.
+      </p>
+      <p>
+        Right now it looks pretty basic. In fact, it's hard to tell there's a nav there at all. We can use CSS styling to make it look a whole lot better.
+      </p>
+      <p>
+        Go into your <code>style.css</code> file in VS code, and make an entry for your nav like so:
+      </p>
+      <pre class="css"><code title="style.css" language="CSS">
+nav {
+
+}
+      </pre></code>
+      <p>
+        This is called a <b>selector</b>. This means whatever code we put within the curly braces here will be applied specifically to our nav.
+      </p>
+      <p>
+        To improve our nav, let's add a background colour for it, and also add some padding so that there's space between the nav and elements underneath it in future.
+      </p>
+      <pre class="css"><code title="style.css" language="CSS">
+nav {
+    background-color: #666666;
+    padding: 20px;
+}
+      </pre></code>
+      <p>
+        In this example we've set <code>background-color</code> to <code>#666666</code>. Colours can be specified a few different ways, what we used here is known as a 'hex colour code', which are values between <code>#000000</code> (black) and <code>#ffffff</code> (white).
+      </p>
+      <p>
+        Hue/Saturation/Lightness is another way to get specific colours, and can be performed by having <code>hsl(0, 0%, 0%)</code> up to  <code>hsl(360, 100%, 100%)</code> in your CSS code instead.
+        You can also use RGB (Red/Green/Blue) values with <code>rgb(0,0,0)</code> up to <code>rgb(255,255,255)</code>, or in some cases you can just type in the colour with just words e.g. <code>red</code>, <code>maroon</code>, and <code>darkslateblue</code>.
+      </p>
+      <p>
+        Which technique you use is up to personal preference. If you want to pick your own colours for your website, you can get all of these values for a huge variety of colours here: <a href="https://www.w3schools.com/colors/colors_picker.asp">W3Schools Colour Picker</a>.
+      </p>
+      <p>
+        But let's get back to our code. We aren't done with CSS for our nav just yet, we also want to have some styling for the <code>h1</code> that is inside the nav like this:
+      </p>
+      <pre class="css"><code title="style.css" language="CSS">
+h1 {
+    color:  #93f6ff;
+    margin: 0;
+}
+      </pre></code>
+      <p>
+        You can see we've used another hex value as our colour, feel free to change these to whatever you want. The <code>margin: 0</code> line is to remove the default spacing that sorrounds the <code>h1</code> in your HTML code by setting it to 0. This makes the nav look a bit sleeker overall.
+      </p>
+      <p>
+        The last thing we want to do, so that the nav covers the whole top of the screen (with no white space around it), is to set the <code>margin</code> in the <code>&lt;body&gt;</code> to 0 like this:
+      </p>
+      <pre class="css"><code title="style.css" language="CSS">
+body {
+    margin: 0;
+}
+      </pre></code>
+      <p>
+        Make sure you save your <code>style.css</code> code and refresh your shop page in the browser to see the changes. If you applied these 3 selectors successfully in your CSS code (body, h1, nav) your page should look something like this:
+      </p>
+      <img src="./images/nav_css.PNG" alt="nav with css" style="width:50%;">
+      <p>
+        You might prefer to have an image that serves as your shop logo instead of a heading. We're going to get into images in the next level, so feel free to come back and edit the contents of your nav later.
+      </p>
+
+      <p class="callout success">
+        Congratulations! You leveled up to level 3. You're on fire! &#128293;
+      </p>
+      <p class="callout info">
+        Fun Fact: the HTML code for a flame emoji is <code>&amp#128293;</code>
+      </p>
+      <h2>Level 4 - Did someone say headers?</h2>
+      <h3>What is a header?</h3>
+      <p>
+        Headers usually represent a container for introductory pictures or texts, or even a set of links to help the users navigate your cool website. You can think
+        of it as a place to put introductory stuff to your website. Let's add a <code>header</code>, right underneath the <code>nav</code>
+        that we created before.
+      </p>
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+          <pre class="html"><code title="index.html" language="HTML">
+&lt;header&gt;
+  <!--...Code goes in here-->
+&lt;/header&gt;
+          </code></pre>
+        </div>
+      </div>
+
+      <p>Now that we have a <code>header</code> section within our code, let's give a shot at adding a picture that your users will first see when they load up your website. 
+        Within your <code>header</code> section we will need to add an image link to add in a picture. We can do so by adding an <code>img</code> block within the <code>header</code> section.</p>
+
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+          <pre class="html"><code title="index.html" language="HTML">
+&lt;header&gt;
+    &lt;img src="images/shop-hero-banner.jpg" width="100%" alt="Shop"&gt;
+&lt;/header&gt;
+          </code></pre>
+        </div>
+      </div>
+      <p>Before we do so, let's get organised together and make a folder specifically to contain images. Navigate to your working folder within your file explorer and make a new folder called <b>images</b>.
+        That way when we have more images in the future, we know where we can put them and where we can find them if we need them to display on our website.</p>
+      <p>We want to have a large image to use as a 'hero banner' for our shop now. See if you can find a cool image on the internet that suits your chosen style!</p>
+      <p>Alternatively, you could just right click and save the image below which we're using as an example, and change it later when you feel like it.</p>
+      <img src="images/shop-hero-banner.png">
+      <p class="callout warning">
+        No matter what image you pick, make sure you save it in your new images folder so that future steps work for you
+      </p> 
+      <p>Now that you have a folder called <b>images</b>, and an image file to use sitting within it, you may be wondering what do <code>src</code>, <code>width</code> and <code>alt</code> mean within the <code>&lt;img&gt;</code> block?</p>
+      <h3>How to set the attributes in the <code>img</code> block</h3>
+      <p><code>src</code> stands for source, which tells your website where to look for your image. In order to set the image for the <code>img</code> block, let's try to reference an image that we've 
+         put into our <b>images</b> folder. To reference your image, you need to specify its <b>path</b>. Start typing the folder name, i.e. <b>images</b>, and see if Visual Studio starts
+         suggesting files through its auto-fill. </p>
+      <img src="images/add-image-file.png">   
+      <p><code>width</code> stands for width, which tells your website how wide your image should be. From the example above, 100% sets the image to 100% of the original image. 
+         If you would like the image to be smaller, you could set it to 50% of the original image, which translates to half the original size! Another important way you could
+         try setting your image width is by using <b>px</b> unit which stands for <b>pixel</b>. Pixels are relative to each device, which means one pixel on one device
+         could be a different size on another device. To read more on CSS units, you can do so <a href="https://www.w3schools.com/cssref/css_units.asp">over here</a>.</p>
+      <p><code>alt</code> stands for alternate text, which specifies the text of an image if the image cannot be displayed. The alt text adds a text description to an image on a web page, and should be used wherever possible to ensure accessability. For people with vision impairments, alt text is accessed by their screen reader to provide them with a text equivalent of images.
+      <p>You might notice that your banner image is taking too much room on your page. A quick and neat way to fix this would be to add in some CSS that targets images that are in your header like so:</p>
+      <pre class="css"><code title="style.css" language="CSS">
+header img {
+    max-height: 500px;
+    object-fit: cover;
+}
+      </code></pre>
+      <p>The <code>max-height</code> statement controls...you guessed it, the maximum height of the image. Its set to 500px but feel free to tweak it to what works for you.</p>
+      <p>The <code>object-fit</code> is a quick statement to say you want the image to cover the full page, so horizontally it reaches the edges. Depending on the image you use, it might look weird because its favouring the center of your image
+      Why not try out some of the other <code>object-fit</code> types like <code>fill</code> or <code>contain</code> and see how it changes.</p>
+      <p class="callout warning">
+        Don't forget to save your work and refresh your browser each time so your changes appear. 
+      </p>
+      <p>For some other things you can do with CSS on image, <a href=https://www.w3schools.com/css/css3_images.asp>look here</a>!</p>
+      <p>Remember to ask the tutors if you get stuck!</p>
+      <p class="callout success">
+        Congratulations! You leveled up to level 5. Can you feel your brain expanding? &#129504;
+      </p>
+      <p class="callout info">
+        Fun Fact: the HTML code for a brain is <code>&amp#129504;</code>      
+      </p>
+
+      <h2>Level 5 - Let's get some info up in this space!</h2>
+      <p>
+        Now that we've got our "Hero Banner" and our shop logo looking amazing, it's time to add some more content to our website.
+        We'll start by adding a section of text where we can tell everyone who visits just what our store is all about!
+      </p>
+
+      <h3>Paragraphs</h3>
+      <p>
+        In the last level, we put the header tag into the <code>&lt;body&gt;</code> section
+        of your HTML. We will be placing the next bit of code underneath this in the same section. 
+      </p> 
+      <p>
+        Let's start by adding the tags for a paragraph <code>&lt;p&gt;&lt;/p&gt;</code> which will hold our information.
+      </p>
+      <p>Inside these tags type out what you'd like to say about your shop. For example:
+      </p>
+     <pre class="html"><code title="index.html" language="HTML">
+&lt;p&gt;Welcome to our shoppe!&lt;/p&gt;
+      </code></pre>
+      <p>If you'd like to separate your information out and have multiple paragraphs, then it's easy. Just put each paragraph inside
+        a new set of paragraph <code>&lt;p&gt;&lt;/p&gt;</code> tags!
+      </p>
+      <p>Save your code and refresh your browser to watch the information you've written appear on your website!</p>
+      
+      <!-- Insert picture of what the code should look like here -->
+
+      <p>At the moment, our text looks a little boring, and that's because we're using the default styling of
+        your web browser. Well, thanks to the magic of our CSS stylesheet, we can make our text more interesting than a grey block of text!
+      </p>
+
+      <p>Since we want our styling changes to apply to all the paragraphs on our page, 
+        it's important that we make our changes in the right section of our CSS. 
+        Working in our <code>style.css</code> file, we want to create a <b>p</b> section with 
+        curly braces, the same way we did in level 4.
+      </p>
+
+      <p>
+        Let's start by deciding how close to the left of the page we'd like our text to sit. We do this by adding a <b>margin</b> and giving it a value.
+      </p>
+      <pre class="css"><code title="style.css" language="CSS">
+p {
+    margin: 20px;
+}
+      </pre></code>
+  
+      <p>Try experimenting with different numbers after the <b>margin</b> until you find a position that you're happy with.</p>
+      
+      <p class="callout warning">
+        Don't forget to save your work and refresh your browser each time so your changes appear. 
+      </p>
+
+      <p>Now that we've worked out the position of our text, how about changing the font?</p>
+      <p>We can specify the font we'd like to use or allow our browser to select the closest font to it using font-families in CSS.
+        There are five generic font families which contain a list of different fonts:
+        Serif fonts (which have a small stroke at the edges of each letter), Sans-serif fonts (which have clean lines),
+        Monospace fonts (all letters have the same width), Cursive fonts (which look like handwriting), 
+        and Fantasy fonts (which are the decorative ones). 
+      </p>
+
+      <p>
+        We want to apply our font to the whole body, so that it applies to <em>all text</em> including headings, not just
+        our paragraphs. Going back to where we styled our <b>body</b>, add a line for <b>font-family</b>.
+        Then we specify the font we'd like, followed by the font-family it belongs to. For example 'Trebuchet MS', sans-serif.
+      </p>
+
+      <pre class="css"><code title="style.css" language="CSS">
+body {
+    margin: 0;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+      </pre></code>
+
+      <p>
+        Have a play around with the different font families and fonts available to you until you find one you like the look of. We go into this in more detail in the Extensions below.
+      </p>
+
+      <p>
+        If you have time, and you want to try out something extra (like changing font size or colour) move on to
+        the <b>Extensions</b> section below.
+      </p>
+
+      <p class="callout success">
+        Congratulations! You leveled up to level 5. You are officially an HTML Wizard &#129497;
+      </p>
+      <p class="callout info">
+        Fun Fact: the HTML code for a wizard is <code>&amp#129497;</code>
+      </p>
+      <hr />
+    </section>
+    <section>
+      <h1>Extensions</h1>
+      <p>
+        The topics in this section of the workshop are completely optional, and
+        you can work on them in any order you like. If you have spare time and
+        want to learn more, give them a go!
+      </p>
+      <h2>Text Tags</h2>
+      <p>
+        There are a bunch of tags you can use to modify how the text on your
+        page looks. Try putting these tags around your own text:
+      </p>
+      <table style="width: 50%">
+        <tr>
+          <th>Tag</th>
+          <th>Code</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>Normal text</td>
+          <td><code>your text</code></td>
+          <td>your text</td>
+        </tr>
+        <tr>
+          <td>Bold text</td>
+          <td><code>&lt;b&gt;your text&lt;/b&gt;</code></td>
+          <td><b>your text</b></td>
+        </tr>
+        <tr>
+          <td>Italic text</td>
+          <td><code>&lt;i&gt;your text&lt;/i&gt;</code></td>
+          <td><i>your text</i></td>
+        </tr>
+        <tr>
+          <td>Marked text</td>
+          <td><code>&lt;mark&gt;your text&lt;mark&gt;</code></td>
+          <td><mark>your text</mark></td>
+        </tr>
+        <tr>
+          <td>Inserted text</td>
+          <td><code>&lt;ins&gt;your text&lt;ins&gt;</code></td>
+          <td><ins>your text</ins></td>
+        </tr>
+        <tr>
+          <td>Deleted text</td>
+          <td><code>&lt;del&gt;your text&lt;/del&gt;</code></td>
+          <td><del>your text</del></td>
+        </tr>
+        <tr>
+          <td>Smaller text</td>
+          <td><code>&lt;small&gt;your text&lt;/small&gt;</code></td>
+          <td><small>your text</small></td>
+        </tr>
+        <tr>
+          <td>Subscript text</td>
+          <td><code>&lt;sub&gt;your text&lt;/sub&gt;</code></td>
+          <td><sub>your text</sub></td>
+        </tr>
+        <tr>
+          <td>Superscript text</td>
+          <td><code>&lt;sup&gt;your text&lt;/sup&gt;</code></td>
+          <td><sup>your text</sup></td>
+        </tr>
+      </table>
+
+      <p>
+        Here is an example on how you can add all of these stylings together.
+        Give it a shot in your page and try out different combinations!
+      </p>
+
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+          <pre class="html"><code title="index.html" language="HTML">
+&lt;h1&gt;&lt;i&gt;&lt;b&gt;&lt;mark&gt;Hello!&lt;/mark&gt;&lt;/b&gt;&lt;/i&gt;&lt;/h1&gt;
+          </code></pre>
+        </div>
+        <h3>Result</h3>
+        <div>
+          <h1 style="margin: 0">
+            <i
+              ><b><mark>Hello!</mark></b></i
+            >
+          </h1>
+        </div>
+      </div>
+
+      <h2>Fonts</h2>
+      <p>
+        You may notice that we already have code for the font-family parameter
+        in the <code>body{}</code> section of your CSS. Let's think about how we're going to change it to
+        something you might prefer.
+      </p>
+      <p>
+        There are only so many fonts that are universally installed in all
+        browsers and devices, these are called web safe fonts. You can use these
+        fonts without having to make more references in your Header.
+      </p>
+      <p>Below is a few examples of the web safe fonts you can choose from:</p>
+
+      <table style="width: 100%">
+        <tr>
+          <th>Font Name</th>
+          <th>Code</th>
+          <th>Result</th>
+        </tr>
+        <tr>
+          <td>Georgia (serif)</td>
+          <td>font-family: 'Georgia', serif;</td>
+          <td><p style="font-family: 'Georgia', serif;">Lorem ipsum dolor sit amet</p></td>
+        </tr>
+        <tr>
+          <td>Tahoma (sans-serif)</td>
+          <td>font-family: Tahoma, sans-serif;</td>
+          <td><p style="font-family: Tahoma, sans-serif;">Lorem ipsum dolor sit amet</p></td>
+        </tr>
+        <tr>
+          <td>Comic Sans (cursive)</td>
+          <td>font-family: 'Comic Sans MS', 'Comic Sans', cursive;</td>
+          <td><p style="font-family: 'Comic Sans MS', 'Comic Sans', cursive;">Lorem ipsum dolor sit amet</p></td>
+        </tr>
+        <tr>
+          <td>Courier New (monospace)</td>
+          <td>font-family: 'Courier New', monospace;</td>
+          <td><p style="font-family: 'Courier New', monospace;">Lorem ipsum dolor sit amet</p></td>
+        </tr>
+      </table>
+      </br>
+
+      <p>
+        If you don't want to use any of the standard HTML fonts and you're
+        looking for something more specific or interesting, there is another
+        solution - <a href="https://fonts.google.com/">Google Fonts </a>.</p>
+      <p>
+        The thing to bear in mind with these fonts is you have to include a
+        reference to Google's own font information for it to work.<br />
+        For example, let's say you wanted to use the 'Comic Neue' font from google
+        fonts, then you'd need to add a reference like this into the head of
+        your HTML code (the same way you added a reference to you CSS file
+        earlier):
+      </p>
+
+      <pre class="html"><code title="index.html" language="HTML">
+&lt;head&gt;
+    ...
+    &lt;link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Comic+Neue"&gt;
+&lt;/head&gt;   
+      </code></pre>
+      <p>
+        And just as you would with a standard HTML font, in the <code>body{}</code> section,
+        replace the font-family value with the name of your chosen font. So for this
+        Google Fonts example it would be:
+      </p>
+      <div>
+          <pre class="css"><code title="style.css" language="CSS">
+body {
+    ...
+    font-family: 'Comic Neue', cursive;
+}
+          </code></pre>
+      </div>
+    </br>
+      <h4>Styling Specific Text</h4>
+      <p>
+        We applied a font-family to the <code>body{}</code> section of your HTML, which means
+        it applies to all text that displays on your page. If you want to
+        specify a font-family for only Paragraph text for example, you would
+        need to put the 'font-family:' code line into the <code>p{}</code> section instead.
+      </p>
+
+      <p>
+        The <code>font-weight</code> property dictates how thick the individual text
+        typed on your webpage will be. Its value can be set with numbers
+        between 100 and 900, or with words like normal, bold, bolder,
+        lighter.<br>
+
+        400 is the same as normal, and 700 is the same as bold. As an example,
+        let's change our paragraph text to have a weight between normal and bold
+        by adding the line font-weight: 550 in the <code>p{}</code> section of our code.<br>
+
+        Another thing to note is that a given Google Font may only have styles for certain weight numbers.
+        For example, Comic Neue only has styles for weights 300, 400, and 700.
+
+      </p>
+      <p>
+        The <code>font-size</code> property determines how large you want the text to
+        be on the page. It can take values from 'xx-small' to 'xx-large', or any
+        other css units like '10px', '50%' or '3em'. <br />
+        Let's set our paragraph's text size to be bigger than the default using
+        px (pixel) units. We just need to add the line font-size: 20px in the
+        <code>p{}</code> section of the code. Change it to whatever looks good to you, just
+        bear in mind that 16px is the default font size. <br />
+      </p>
+      <h2>CSS Selectors</h2>
+      <p>
+        What we've learned in this workshop is that in order to style HTML elements we need to select them in our CSS code. To do
+        this we've been using what are called CSS selectors, which are used to target different parts of
+        our webpage.</br>
+        A fun way to learn more about how selectors work is to play a browser-based game called CSS Diner.
+        It will also introduce you to advanced selectors using IDs and Classes. If you've done everything else in this workshop,
+        why not try it out. IDs and Classes are sure to come up in future workshops.
+      </p>
+      <p><b>CSS Diner: </b><a href="https://flukeout.github.io/">https://flukeout.github.io/</a></p>
+    </section>
+    <section>
+      <h1>Additional Resources</h1>
+      <ul>
+        <li>
+          Learn HTML -
+          <a href="https://www.w3schools.com/html/"
+            >https://www.w3schools.com/html/</a
+          >
+        </li>
+        <li>
+          Learn CSS -
+          <a href="https://www.w3schools.com/css/"
+            >https://www.w3schools.com/css/</a
+          >
+        </li>
+      </ul>
+    </section>
+  </body>
+  <script src="../utils/lib/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</html>

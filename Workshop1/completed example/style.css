@@ -1,0 +1,23 @@
+body {
+    margin: 0;
+    font-family: 'Trebuchet MS', sans-serif;
+}
+
+nav {
+    background-color: #666;
+    padding: 20px;
+}
+
+h1 {
+    color:  #93f6ff;
+    margin: 0;
+}
+
+header img {
+    max-height: 500px;
+    object-fit: cover;
+}
+
+p {
+    margin: 20px;
+}
