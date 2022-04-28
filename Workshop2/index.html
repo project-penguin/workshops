@@ -1,0 +1,655 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Workshop 2 - More HTML & CSS</title>
+    <link rel="stylesheet" href="../utils/style.css" />
+    <link rel="stylesheet" href="../utils/lib/highlight.min.css" />
+
+    <!-- Uncomment me for some colourful fun :) -->
+
+    <!-- <link rel="stylesheet" href="../utils/lib/gradient.min.css">  -->
+  </head>
+  <body>
+    <header>
+      <section>
+        <h1>Workshop 2 - More HTML & CSS</h1>
+        <blockquote>
+          Goal: learn more about HTML & CSS, including the use of Flexbox to align and distribute items within our website!
+        </blockquote>
+      </section>
+    </header>
+
+    <!-- Introduction -->
+    <section>
+      <h2>Introduction</h2>
+      <p>
+        In this workshop we will continue constructing the website we built in <a href="../Workshop1/index.html" target="blank">Workshop 1</a>. 
+        We will be improving the website in various ways, including adding flexible navigation cards to our homepage that will change size. 
+        We will also learn to write efficient CSS and HTML to make our code easier to read and be better structured!
+        
+      </p>
+      <h3>Why should you care?</h3>
+      <p>
+        To have a website that is user-friendly we need to make sure that the content on our website is usable with
+        different browser sizes, this is because people might visit our website with different sized screens and even mobile phones.
+        Who doesn't want to make coding easier? - We can make our code easy to manage by attemptting to make reusable elements or styling wherever possible!
+      </p>
+      <p>
+        But before we get into that, let's do a quick recap on what we learnt in the last workshop...
+      </p>
+      <h3>Recap of Workshop 1</h3>
+      <ul>
+        <li><b>HTML</b> specifies the page content and layout.</li>
+        <ul>
+          <li>
+            <strong>HTML tags</strong> are used to specify the content. We wrap the content with them, an <strong>opening tag</strong> looks like <code>&lt;title&gt;</code> 
+              and a <strong>closing tag</strong> looks like <code>&lt;/title&gt;</code>. We covered many different tags such as <code>img</code>, <code>h1</code>, <code>header</code> and <code>p</code>. An example of HTML:
+              <pre class="html"><code>
+&lt;title&gt;Workshop 2 - More HTML & CSS&lt;/title&gt;
+              </code></pre>
+            
+          </li>
+        </ul>
+          <li><b>CSS</b> specifies the page styling and theming by describing how HTML elements should be displayed on a page. </li>
+          <ul>
+            <li><strong>CSS Selectors</strong> are used to specify the element(s) being styled. We also covered various CSS elements such as <code>margin</code>, <code>font-family</code>, <code>max-height</code> and <code>object-fit</code>. An example of CSS:
+                <pre class="css"><code>
+h1 {
+  color: red;
+}
+                </pre></code>
+            </li>
+          </ul>
+      </ul>
+      Feel free to go back to <a href="../Workshop1/index.html" target="blank">Workshop 1</a> to help jog your memory, or ask a tutor for help!
+
+      <h3>Objectives</h3>
+      <p>
+        <b>What will we do today?</b>
+      </p>
+      <p>We will be creating and styling a complete HTML page that will act as the base for a digital storefront.</p>
+      <p>By the end of this Workshop, you will:</p>
+      <ul>
+        <li>
+          Be able to identify and use semantic and non-semantic elements
+        </li>
+        <li>
+          Be able to use CSS selectors and classes effectively
+        </li>
+        <li>
+          Be able to understand and use the Flex property
+        </li>
+        <li>
+          Implement navigation boxes on your own Store homepage
+        </li>
+      </ul>
+      <hr />
+
+    </section>
+
+    <section>
+      <h1>Building Your Website</h1>
+
+        <h2>Level 0 - Setup</h2>
+  
+            <p>
+              If you were here for the first workshop, open up the folder from our last workshop and you're ready to go! 
+              If you need a refresher, we will go into more detail below.
+            </p>
+        
+            <p>
+              If you weren't here for the first workshop, then welcome! &#129299; 
+              You will need to have Visual Studio Code (VS Code) downloaded. If
+              you don't, then we have instructions below on how to setup your VS
+              Code environment. 
+            </p>
+              <details>
+                <summary>How to set up Visual Studio Code &lt;click here></summary>
+                <h3>Step 1 - Create your workspace</h3>
+                <p>
+                  Use this link to download a zip file to your computer:
+                  <a href="/runsheets/Workshop1/Workshop1.zip">Download Workshop1</a>.
+                  After downloading the file, create a new folder and copy the unzipped files into new folder. Make sure to give it a
+                  meaningful name, such as My Website or the name that you would like your store to have. 
+                  <p class="callout info">
+                   To find your zipped files that you downloaded, open up your File Explorer/Finder and 
+                  check 'Downloads' folder. To unzip the entire folder, right click and then select extract all.
+              
+                 </p>
+
+                <h3>Step 2 - Setup your Project in Visual Studio Code</h3>
+                <p>Open up VS Code, it should look like the image below:</p>
+                <img src="./images/vs_code_1.PNG" />
+                <p>
+                  From the top-left menu select <strong>File » Open Folder...</strong> and choose the folder that you just made.
+                </p>
+      
+                <h3>Step 3 - Setup your Internet Browser</h3>
+                <p>
+                  You will need to open up <code>index.html</code> in your browser. To do
+                  this, double click on the <code>index.html</code> file using file explorer and it should open
+                  up in your default browser.
+                </p>
+                <p class="callout info">
+                  From inside VS Code, right click on <code>index.html</code> and select "Reveal in File Explorer/Finder" to quickly navigate to a file.
+                </p>
+                <p>As your website is still empty, it should look like the image below:</p>
+                <img src="./images/web_browser.PNG" alt="" />
+                Now you should be able to continue with Workshop 2.
+              </details>
+            </p>
+            
+          </div>
+        </details>
+    </section>
+    <section>
+      <h2>Level 1 - Semantic elements</h2>
+      <p>In HTML we have something called semantic elements. These elements indicate the type of content that they contain. Which means that their content is defined clearly to both the browser and the developer (you!). </p>
+      <p>For instance, semantic elements like <code>&lt;table&gt;</code> and <code>&lt;section&gt;</code> describe the purpose of the element and the type of content that is inside them.
+      On the other hand, non-semantic elements like <code>&lt;div&gt;</code> and <code>&lt;span&gt;</code>don't tell us anything about its content.</p> 
+      <h3><b>Why do we need it?</b></h3>
+      <p>Firstly, it is easier to read and understand the code. Secondly, it's creating a better experience for users as search engines and assistive technologies (like text to speech for users with reading disabilities) are able to better understand the content of your website. </p>
+
+      <h3><b>Usage</b></h3>
+      <p>
+      The <code>&lt;section&gt;</code> element defines a section in a document and can be used for: chapters, introductions, news items, contact information.  
+      The <code>&lt;div&gt;</code> tag defines a division in a document and allows you to separately style a certain portion of your webpage (using classes or IDs, which will be covered later). 
+      When used as a container for HTML elements, it has no effect on the layout until it is styled with CSS.   
+        </p>
+        <p>
+          The <code>&lt;section&gt;</code> <code>&lt;/section&gt;</code> element just like the <code>&lt;div&gt;</code> <code>&lt;/div&gt;</code> tag come in pairs. The content is written between the opening and closing tags.
+        </p>  
+          <h3><b>Writing the code</b></h3>
+            <p>It is time for us to create our own section now.</p>
+            <ul>
+              <li> Make sure you have opening and closing tags <code>&lt;section&gt;</code> <code>&lt;/section&gt;</code>.</li>
+               <li> Add 4 divisions <code>&lt;div&gt;</code> inside your section.</li>
+               <li> Inside your <code>&lt;div&gt;</code> tag include an image from your <code>'images'</code> folder (you'll have to put some images into this folder first, you can even pick something that you like from internet and download it). </li>
+               <details>
+                <summary>If you need a quick recap on how to add image to your section &lt;click here> </summary>
+                <div class="content">
+              <p>Let's try to remember how to add photos to our section. Put your photo inside the "images" folder in your working folder. If the folder doesn't exist, create one.
+                Then add an img tag into your HTML like this:</p>
+                <pre class="html">
+                  <code>&lt;img src="..." alt="..."&gt;</code>
+                </pre>
+                <p>You may be wondering what do with <code>src</code> and <code>alt</code> within the <code>&lt;img&gt;</code> tag.
+                Like we said in the previous workshop, <code>src</code> stands for source, which tells your website where to look for your image, <code>alt</code> stands for alternate text, which specifies the text of an image if the image cannot be displayed. 
+                The alt text adds a text description to an image on a web page, and should be used wherever possible to ensure accessibility.</p>
+                <p>For people with vision impairments, alt text is accessed by their screen reader to provide them with a text equivalent of images. In order to set the image for the <code>img</code> block, let's try to reference an image from
+                our <code>images</code> folder. To reference your image, you need to specify its <code>path</code>. Start typing the folder name, i.e. <code>images</code>, and see if Visual Studio starts
+                suggesting files through its auto-fill. </p>
+                <img src="images/add-image-file.png">
+        
+              </details>
+               <li> Make sure you include your heading and paragraph inside <code>&lt;div&gt;</code> tag as well.  Be creative and write it in your own words between <code>&lt;h2></code> <code>&lt;/h2></code> and <code>&lt;p></code> <code>&lt;/p></code> tags. 
+            </ul> 
+        
+        <div class="snippetresult">
+          <h3>Code</h3>
+          
+       <pre class="html"><code title="index.html" language="HTML">
+
+&lt;section&gt
+    &lt;div&gt
+        &lt;img src="images/cashier.jpg" alt="cashier"&gt
+        &lt;h2>Goods&lt;/h2>
+        &lt;p>Buy thing&lt;/p>
+    &lt;/div>
+    &lt;div>
+        &lt;img src="images/mechanic.jpg" alt="mechanic"&gt
+        &lt;h2>Services&lt;/h2>
+        &lt;p>Services for all&lt;/p>
+    &lt;/div>
+    &lt;div>
+        &lt;img src="images/question-cat.jpg" alt="cat confused">
+        &lt;h2>Questions&lt;/h2>
+        &lt;p>All your burning questions answered&lt;/p>
+    &lt;/div>
+    &lt;div>
+        &lt;img src="images/answer-cat.png" alt="cat confused">
+        &lt;h2>Answers&lt;/h2>
+        &lt;p>All the answers you need&lt;/p>
+    &lt;/div>
+&lt;/section>
+
+</code></pre>
+
+  </div>
+  <p>Your result should look something like this:</p>
+  <h3>Result</h3>
+  <div>
+    <img src="./images/example.png" alt="Example of your page how it should look like" />
+  </div>
+</div>
+ </code></pre>
+  </div>
+
+  <p>To create some space around <code>section</code>'s border, go to your <code>style.css</code> in VS code and make an entry like: </p>
+      <pre class="css"><code title="style.css" language="CSS">               
+section {
+    margin: 50px;
+}
+               </pre></code>
+                <p>        
+                  <p class="callout success">
+                    If your head is spinning, it might be a good sign that you just leveled up to level 2, congratulations! &#128521;
+                  </p>
+      </section>
+      <section>
+      <h2>Level 2 - Add CSS classes</h2>
+      <p> 
+        In the last workshop, we learnt how to style a particular element like <code>&ltp&gt</code>. One problem is that the CSS rule would end up affecting every <code>&ltp&gt</code> element in the page. What if we wanted to style just
+        a specific group of elements? CSS classes are a way to do this! A CSS class is specified through the class attribute in an HTML tag. For example:
+      </p>
+      <pre class="html"><code> 
+&ltp class="redParagraph"&gt &lt/p&gt 
+      </code></pre>
+      <p>
+        To add CSS rules to this class, we would have to add a dot before the name
+        of the class in the CSS file. For example:
+      </p>
+      <pre class="css"><code>
+.redParagraph {
+    color: red;
+}
+      </code></pre>
+      <p>
+        This CSS will change the text colour of the paragraph to red. Remember, only HTML elements with the class "redParagraph" will be affected by this CSS. In this next example, only the last 2 <code>&ltp&gt</code>
+        elements will be red coloured.
+      </p>
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+      <pre class="html"><code>
+&ltp&gt Hi there. &lt/p&gt
+&ltp class="redParagraph"&gt Welcome to my shop! &lt/p&gt
+&ltp class="redParagraph"&gt We have many items on sale! &lt/p&gt
+      </code></pre>
+        </div>
+        <h3>Result</h3>
+        <div>
+          <p> Hi there. </p>
+          <p style="color:red"> Welcome to my shop! </p>
+          <p style="color:red"> We have many items on sale! </p>
+        </div>
+      </div>
+      <p>
+        Did you know that different types of elements can belong to the same class? For example
+      </p>
+      <pre class="html"><code>
+&ltdiv class="redParagraph"&gt Hello &lt/p&gt
+&ltp class="redParagraph"&gt How are you? &lt/p&gt
+      </code></pre>
+      <h3>
+        Adding CSS to our HTML file
+      </h3>
+      <p>
+        Let's return to the HTML file we're working on and add classes to style groups of elements.
+      </p>
+      <p>
+        The <code>&ltdiv&gt</code> elements we added in Level 1 are all similar in the type of content they
+        display. In other words it would make sense to add these elements to one common class so they are styled the same.
+        Let's call it "itemcard" since each div will look like a card (once we style it). 
+      </p>
+      <pre class="html"><code title="index.html" language="HTML">
+&ltdiv class="itemcard"&gt
+    ....
+&lt/div&gt
+
+&ltdiv class="itemcard"&gt
+    ....
+&lt/div&gt
+
+&ltdiv class="itemcard"&gt
+    ....
+&lt/div&gt
+
+&ltdiv class="itemcard"&gt
+    ....
+&lt/div&gt
+
+      </code></pre>
+
+      <p>
+        Let's also add a class to the <code>&ltsection&gt</code> element. Although we've only used it once in the code so far, we may
+        add more and thus using a class would be useful. Let's use the class name "itemlist".
+      </p>
+      <pre class="html"><code title="index.html" language="HTML">
+&ltsection class="itemlist"&gt
+    ....
+&lt/section&gt
+
+      </code></pre>
+
+      <p>
+        In the next level, we'll add the classes to the CSS file and define some attributes for them.
+      </p>
+      <p class="callout success">
+        Congratulations! You leveled up to level 3! &#128293;
+      </p>
+    </section>
+    <section>
+      <h2>Level 3 - Make it look nice!</h2>
+      <p>
+        Now that we have added class names to our HTML, we're going to style those classes in our CSS, as our
+        navigation list looks pretty messy right now! This is how we want each card to look:
+      </p>
+      <img src="./images/styled-card.png" style="width:200px">
+
+      <h3>CSS selectors</h3>
+      <p>Remember the "red paragaph" example from level 2?</p>
+      <pre class="css"><code>
+.redParagraph {
+    color: red;
+}
+      </code></pre>
+      <p>
+        <code>.redParagraph</code> in the code snippet above is called a <strong>CSS selector</strong>
+        because it targets a specific part of your page to apply a style to.
+        Before moving on, spend around 10 minutes playing the <strong>CSS diner game</strong> to learn how to use selectors.
+      </p>
+
+      <a href="https://flukeout.github.io/">Play CSS Diner game</a>
+      
+      <p class="callout warning">
+        Make sure you have reached at least level 5 in the CSS Diner game before moving on! If you're stuck, ask a 
+        facilitator.
+      </p>
+
+      <h3>Image dimensions</h3>
+
+      <p>
+        The first thing we want to do is make the images inside the cards a fixed height so that they're not all different
+        sizes. We want a CSS selector that targets only <strong>images inside item cards</strong>, otherwise we would apply
+        the height to <strong>all</strong> images, including the banner image. Go to your <code>style.css</code>, and at
+        the bottom of the file (below last workshop's work) add the correct CSS selector. If you're stuck, look at the
+        solution below. 
+      </p>
+
+      <details>
+        <summary>Solution</summary>
+        <div class="content">
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard img {
+
+}
+
+</pre></code>
+        </div>
+      </details>
+
+      <p>
+        Let's start by fixing the height to 200 pixels, then have a look at the result, and change it to whatever you like.
+      </p>
+
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard img {
+    height: 200px;
+}
+
+</pre></code>
+
+      <p>
+        Now let's style the card itself. Add a CSS rule for the <code>itemcard</code> class. We want to make the cards
+        a fixed width, so add <code>width: 400px</code>, and we want to have space between the cards, so add 
+        <code>margin: 0px 20px</code>. This will set a horizontal margin of 0px and a vertical margin of 20px.
+      </p>
+        
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard {
+    width: 400px;
+    margin: 0 20px;
+}
+
+</pre></code>
+
+      <p class="callout info">
+        Remember, you can right-click on an element on your web page and press Inspect, to modify the CSS in
+        real-time to see its effects before making changes to your code.
+      </p>
+
+      <p>
+        Next, we want to add a background colour to the card, make its corners rounded and add a shadow effect.
+      </p>
+
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard {
+    ....
+    background-color: #fff;
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.2);
+    border-radius: 10px;
+}
+
+</pre></code>
+
+        <p>
+          You may notice that you start getting a horizontal scrollbar you make your browser window smaller. Add
+          <code>overflow: hidden</code> to make the cards shrink instead of adding a scrollbar.
+        </p>
+
+
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard {
+    ...
+    overflow: hidden;
+}
+
+</pre></code>
+
+        <p>
+          Now if your screen is large (or if you zoom out in the browser), you will notice that the image doesn't
+          fully fill the card. To fix this, we want to set the width of the image to 100% so that it fully fills the box. 
+          But that causes the image to be squeezed when there's not enough space, so add <code>object-fit: cover</code>
+          to tell the image to crop to whatever space is available.
+        </p>
+
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard img {
+    ...
+    width: 100%;
+    object-fit: cover;
+}
+
+</pre></code>
+
+        <p>
+          Once you're done, open the below box to see what your code should look like now.
+        </p>
+
+        <details>
+          <summary>Result</summary>
+          <div class="content">
+              <h3>Code</h3>
+<pre class="css"><code title="style.css" language="CSS">
+.itemcard {
+    width: 400px;
+    margin: 0 20px;
+
+    background-color: #fff;
+    box-shadow: 0px 0px 20px 1px rgba(0,0,0,0.2);
+    border-radius: 10px;
+
+    overflow: hidden;
+}
+
+.itemcard img {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
+
+
+</pre></code>
+            <h3>Result</h3>
+            <img src="./images/level-3-result.png">
+          </div>
+        </details>
+
+      <p class="callout success">
+        Congratulations, You leveled up to level 4! Looking good 😎
+      </p>
+    </section>
+    <section>
+      <h2>Level 4 - Flexbox layout</h2>
+
+      <p>
+        Flexbox (or just "flex" for short) is a type of layout that we can use to change the size and arrangement of different elements on our page based on the size of the <b>container</b> they are in. You can imagine a container as an invisible box that holds a number of items. This box has special properties- when you make it bigger or smaller, the items inside it also grow or shrink, and move around to fill the available space. This "flexible" behaviour is the reason why this layout is called "flex". 
+      </p>
+      <style>
+        .flex-example-container {
+          background-color: aliceblue;
+        }
+        .flex-example-card:nth-child(1) {
+          background-color: #eceb9c;
+          border: 5px solid #e6e470;
+        }
+        .flex-example-card:nth-child(2) {
+          background-color: #dfa493;
+          border: 5px solid #e68c70;
+        }
+        .flex-example-card:nth-child(3) {
+          background-color: #9ecde9;
+          border: 5px solid #70bbe6;
+        }
+        .flex-example-card {
+          width: 100px;
+          height: 100px;
+        }
+      </style>
+      <div class="snippetresult">
+        <h3>Without Flex 😪</h3>
+        <div class="flex-example-container">
+          <div class="flex-example-card">Card 1</div>
+          <div class="flex-example-card">Card 2</div>
+          <div class="flex-example-card">Card 3</div>
+        </div>
+        <h3>With Flex 💪</h3>
+        <div class="flex-example-container" style="display: flex;">
+          <div class="flex-example-card">Card 1</div>
+          <div class="flex-example-card">Card 2</div>
+          <div class="flex-example-card">Card 3</div>
+        </div>
+      </div>
+
+      <p>You can see the standard way for elements to be displayed is down the page (<code>display: block;</code>) but with flex we can control this behaviour more precisely.</p>
+      <div class="snippetresult">
+        <h3>Flex Justify End</h3>
+        <div class="flex-example-container" style="display: flex; justify-content: end;">
+          <div class="flex-example-card">Card 1</div>
+          <div class="flex-example-card">Card 2</div>
+          <div class="flex-example-card">Card 3</div>
+        </div>
+        <h3>Flex Justify Space Around</h3>
+        <div class="flex-example-container" style="display: flex; justify-content: space-around;">
+          <div class="flex-example-card">Card 1</div>
+          <div class="flex-example-card">Card 2</div>
+          <div class="flex-example-card">Card 3</div>
+        </div>
+      </div>
+      <p>We can turn any HTML element into a flex container by adding a CSS class to it, and then setting the display property on that class to "flex". </p>
+      <p>Let's try it out by turning our <code>section</code> element into a flex container. Earlier in Level 2, we added the class <code>itemlist</code> to the section element in our HTML file, so that part is already done. Next, we need to add the following code to our <code>style.css</code> file:</p>
+
+      <pre class="css">
+        <code title="style.css" language="CSS">
+.itemlist {
+    display: flex;
+    justify-content: space-around;
+}
+        </code>
+      </pre>
+
+      <p>When you save your changes and reload the page, you should notice that the layout has changed a lot. Previously, the item cards within the <code>section</code> element were displayed from top to bottom, but now they are displayed from left to right. This is because the default direction for flexbox layout is <code>row</code> (left to right). It's also possible to change the direction to <code>column</code> (top to bottom), but in this case we'll be sticking to row.</p>
+      <p>In addition, the "flexible" qualities of the flexbox layout can now be seen. If you click and drag to change the size of your browser window, the size of the <code>itemlist</code> container will change and the item cards inside it will also change size to fill the available space.</p>
+      <p>Finally, we have added one more property: <code>justify-content</code>. This controls how the cards are arranged along the main flex direction (remember, in this case it is <code>row</code> or left to right). The <code>space-around</code> option ensures that each card has an equal amount of space around it, and as a result the cards are distributed evenly along the row.</p>
+
+      <p class="callout info">
+        There are a lot of different options you can use to change the way items are displayed in a flexbox layout. For a more detailed overview, check out the links in the Additional Resources section below! 
+      </p>
+
+      <p class="callout success">
+        Congratulations! You completed the base content. You are officially a CSS Wizard &#129497;
+      </p>
+    </section>
+
+    <!-- Extensions -->
+    <section>
+      <h1>Extensions</h1>
+      <p>
+        The topics in this section of the workshop are completely optional, and
+        you can work on them in any order you like. If you have spare time and
+        want to learn more, give them a go!
+      </p>
+
+      <h2>Add styling for a featured item</h2>
+      <p>
+        CSS classes are great, but what if we wanted to style just one and <b>only</b> one element? For example if we wanted to add a border
+        to one of the itemcards, using a class is fine but not necessary. A better way would be to use an <b>id</b> attribute. An id must be
+        unique so it can identify one element on the page.
+      </p>
+      <p>
+        Let's add an id attribute to the first itemcard on the page.
+      </p>
+      <pre class="html"><code title="index.html" language="HTML">
+&ltdiv class="itemcard" id="specialCard"&gt
+    ...
+&lt/div&gt
+      </code></pre>
+      <p>
+        To style an element with an id, use the <b>hash</b> symbol before its name in the CSS file. For example:
+      </p>
+      <div class="snippetresult">
+        <h3>Code</h3>
+        <div>
+      <pre class="css"><code title="style.css" language="CSS">
+#specialCard {
+    border-width: 5px;
+    border-color: yellow;
+    border-style: solid;
+    font-style: oblique;
+}
+      </code></pre>
+        </div>
+        <h3>Result</h3>
+        <div>
+          <img src="images/id.PNG" style="width:50%">
+        </div>
+      </div>
+      <p>
+        These 4 CSS properties change the font style and create a yellow solid border with a 5px width. Feel free to change the values or try some other properties!
+      </p>
+      <h2>Practicing Flexbox</h2>
+      <p>We've looked at what flexbox is and why you might use it. We used it for our product lineup, but do you think you know how to fully utilise it?</p>
+      <p>If you want to get better at using flexbox, heres a neat little game you can sink some time into now that you're done with the runsheet content. See how far you can get in Flexbox Froggy!</p>
+      <a href="https://flexboxfroggy.com/"
+        >https://flexboxfroggy.com/</a>
+    </section>
+    <section>
+      <h1>Additional Resources</h1>
+      <ul>
+        <li>
+          Learn HTML -
+          <a href="https://www.w3schools.com/html/"
+            >https://www.w3schools.com/html/</a
+          >
+        </li>
+        <li>
+          Learn CSS -
+          <a href="https://www.w3schools.com/css/"
+            >https://www.w3schools.com/css/</a
+          >
+        </li>
+        <li>
+          Detailed Guide to Flexbox Layout -
+          <a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+            >https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a
+          >
+        </li>       
+      </ul>
+    </section>
+  </body>
+  <script src="../utils/lib/highlight.min.js"></script>
+  <script>
+    hljs.highlightAll();
+  </script>
+</html>
