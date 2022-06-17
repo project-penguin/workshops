@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Workshop 3 - Javascript</title>
+        <link rel="stylesheet" href="../utils/style.css" />
+        <link rel="stylesheet" href="../utils/lib/highlight.min.css" />
+
+        <!-- Uncomment me for some colourful fun :) -->
+        <!-- <link rel="stylesheet" href="../utils/lib/gradient.min.css">  -->
+    </head>
+    <body>
+        <header>
+            <section>
+                <h1>Workshop 3 -JavaScript</h1>
+                <blockquote>
+                    Goal: Use Javascript to make your website interactive and
+                    fun to use!
+                </blockquote>
+            </section>
+        </header>
+
+        <!-- Introduction -->
+        <section>
+            <h1>Introduction</h1>
+            <h2>Welcome!</h2>
+            <p>
+                In this workshop we will be looking at
+                <strong>JavaScript.</strong>
+                JavaScript helps us create more engaging content for the web!
+                Interestingly enough, JavaScript (or "JS" for short!) is the
+                most widely used programming language in the world and is the
+                3rd major pillar in modern-day web development. You might be
+                familiar with the first two! The three of them together are...
+            </p>
+            <ul>
+                <li><strong>HTML</strong></li>
+                <li><strong>CSS</strong></li>
+                <li><strong>JavaScript</strong></li>
+            </ul>
+
+            <h3>Why should you care?</h3>
+            <p>
+                The combination of these three languages working together
+                in-sync with one another is what makes today's web-pages what
+                they are! You can only get so far writing great HTML and CSS
+                without including some JS to make our websites interactive.
+            </p>
+
+            <p>
+                If you need to take another look at Workshop 1, click
+                <a href="../Workshop1/index.html" target="blank">here</a>
+                for a refresher!
+            </p>
+
+            <p>
+                But before we get into JavaScript, let's do a quick recap on
+                what we learnt in the last workshop...
+            </p>
+
+            <h3>Recap of Workshop 2</h3>
+            <ul>
+                <li>
+                    We began using semantic and non-semantic elements, and what
+                    they mean for the developer
+                </li>
+                <li>
+                    Played around with CSS selectors and classes... remember
+                    these?
+
+                    <pre class="html"><code>
+&lt;p class="redParagraph"&gt; &lt;/p&gt;
+
+</code></pre>
+
+                    <pre class="css"><code>
+.redParagraph {
+    color: red;
+}
+
+</code></pre>
+                </li>
+
+                <li>
+                    We also began to understand Flexbox using
+                    <code>display; flex;</code> in our CSS file to help position
+                    content on the page
+                </li>
+                <li>
+                    Created navigation boxes for the homepage of our storefront
+                </li>
+            </ul>
+
+            Feel free to go back to
+            <a href="../Workshop2/index.html" target="blank">Workshop 2</a> to
+            help jog your memory, or ask a tutor for help!
+
+            <!-- describe the importance of what we are doing today -->
+
+            <h2>Prerequisites</h2>
+            <h3>Things you need before you start this runsheet:</h3>
+            <ul>
+                <li>
+                    <a
+                        href="https://code.visualstudio.com/"
+                        title="You should already have this"
+                        >Visual Studio Code</a
+                    >
+                    installed and configured from our previous workshops
+                </li>
+                <li>The working files you last used for Workshop 2</li>
+                <li>All of the knowledge you acquired around HTML and CSS!</li>
+                <li>Last but not least... Your A-Game!</li>
+            </ul>
+
+            <p class="callout info">
+                If you need help with the prerequisites - any of the
+                facilitators are happy to help!
+            </p>
+
+            <h3>Objectives</h3>
+
+            <p>
+                <b>What will we do today?</b>
+            </p>
+
+            <p>
+                We will be adding Javascript to make items in your store
+                interactive for users as well as learning the basics of
+                variables and objects.
+            </p>
+
+            <p>By the end of this Workshop, you will:</p>
+            <ul>
+                <li>
+                    Have been introduced to the browser
+                    <strong>console</strong> and be able to create
+                    <strong>variables</strong>
+                </li>
+                <li>
+                    Start creating <strong>objects</strong>, allowing variables
+                    to hold multiple values
+                </li>
+                <li>
+                    Use our objects to display our product cards using
+                    <strong>arrays</strong> and <strong>loops</strong>
+                </li>
+                <li>Learn to create and load a <code>JSON</code>file</li>
+            </ul>
+
+            <p class="callout success">
+                So here we are... Upcoming are some secrets on how to become a
+                pro Web-Developer! Enjoy this session and remember to ask our
+                wonderful tutors any questions along the way. Have fun!
+            </p>
+
+            <hr />
+        </section>
+
+        <section>
+            <h1>Level 0 - Setup</h1>
+
+            <p>
+                If you were here for the second workshop, open up the folder
+                from our last workshop and you're ready to go! If you need a
+                refresher, we will go into more detail below.
+            </p>
+
+            <p>
+                If you weren't here for the previous workshops, then welcome!
+                &#129299; You will need to have Visual Studio Code (VS Code)
+                downloaded, as well as the code from Workshop 2. If you don't,
+                then we have instructions below on how to setup your VS Code
+                environment with the code from previous workshops.
+
+                <details>
+                    <summary>
+                        How to set up Visual Studio Code &lt;click here>
+                    </summary>
+                    <h2>Step 1 - Create your workspace</h2>
+                    <p>
+                        Use this link to download a zip file to your computer
+                        <a href="../Workshop2/Workshop2.zip">
+                            Download Workshop2 </a
+                        >. After you downloaded the file, create a new folder
+                        and copy the unzipped files into new folder. Make sure
+                        to give it a meaningful name, such as My Website or the
+                        name that you would like your store to have.
+                    </p>
+
+                    <p class="callout info">
+                        To find your zipped files that you downloaded, open up
+                        your File Explorer/Finder and check 'Downloads' folder.
+                        To unzip the entire folder, right click and then select
+                        extract all.
+                    </p>
+
+                    <h2>
+                        Step 2 - Setup your Project in Visual Studio Code (VS
+                        Code)
+                    </h2>
+                    <p>Open up VS Code, it should look like the image below:</p>
+                    <img
+                        src="./images/vs_code_1.PNG"
+                        alt="An empty VS Code window"
+                    />
+                    <p>
+                        From the top-left menu select
+                        <strong>File --> Open Folder...</strong> and choose the
+                        folder that you just made.
+                    </p>
+
+                    <h2>Step 3 - Setup your Internet Browser</h2>
+                    <p>
+                        You will need to open up <code>index.html</code> in your
+                        browser. To do this, double click on the
+                        <code>index.html</code> file using your file explorer
+                        and it should open up in your default browser.
+                    </p>
+                    <p class="callout info">
+                        From inside VS Code, right click on
+                        <code>index.html</code> and select "Reveal in File
+                        Explorer/Finder" to quickly navigate to a file.
+                    </p>
+                    <p>
+                        We all made progress to our website in WS2, so your
+                        browser should look something like this:
+                    </p>
+                    <img src="./images/web_browser_ws2.PNG" alt="" />
+                    <p>Now you should be able to continue with Workshop 3.</p>
+                </details>
+            </p>
+
+            <h2>What can JavaScript do?</h2>
+
+            <p>
+                JavaScript can help create a captivating and interactive
+                experience for the user, as it allows the user to actively
+                engage with the website! This helps enhance the experience for
+                the user, making it more likely they will either, use our
+                website for longer, or come back more often! Some examples of
+                this include...
+            </p>
+            <ul>
+                <li>
+                    Web Applications e.g. Google Maps - zooming in and dragging
+                    your cursor while using Google Maps is all JS in the
+                    background!
+                </li>
+                <li>
+                    Web Servers and Server Applications. We will learn a little
+                    about this when we start using the console!
+                </li>
+                <li>Browser-based Games</li>
+                <li>Mobile Apps</li>
+            </ul>
+
+            <p>Lets get started!</p>
+        </section>
+
+        <section>
+            <h1>Level 1 - Welcome to JavaScript</h1>
+
+            <p class="callout warning">It's time to do some serious coding!</p>
+
+            <h2>Step 1 - Open the JavaScript Console</h2>
+
+            <p>
+                Lets open up the developer console and have a play around with
+                JavaScript.
+            </p>
+            <p>
+                <strong
+                    >Open up your website <code>index.html</code> and then click
+                    below for instructions.</strong
+                >
+            </p>
+
+            <details>
+                <summary>Click here if you are using Safari</summary>
+                <div class="content">
+                    <h3>Enable the Developer Menu</h3>
+                    <p>
+                        We need to tell Safari that we're developers so that we
+                        can use the console
+                    </p>
+                    <p>
+                        In the menu bar, go to
+                        <strong>Safari > Preferences</strong>, and go to the
+                        <strong>Advanced</strong> tab.
+                    </p>
+                    <p>
+                        At the bottom of the menu, tick the box that says
+                        <strong>Show Develop menu in menu bar</strong>.
+                    </p>
+
+                    <h3>Open the console</h3>
+                    <p>
+                        In the menu bar, click the brand new
+                        <strong>Develop</strong> option, and click
+                        <strong>Show JavaScript Console</strong>
+                    </p>
+                    <p>
+                        This will open up the 'Web Inspector', in the
+                        <strong>Console</strong> tab.
+                    </p>
+                </div>
+            </details>
+
+            <details>
+                <summary>Click here if you are using Chrome or Edge</summary>
+                <div class="content">
+                    <h3>Open Developer Tools</h3>
+                    <p>
+                        In the top right corner of the window, there is a button
+                        with three dots, open this and go to
+                        <strong>More Tools</strong>, and click
+                        <strong>Developer Tools</strong>
+                    </p>
+                    <p>This opens the 'Developer Tools'.</p>
+
+                    <h3>Open the Console</h3>
+                    <p>
+                        In the tabs at the top of Developer Tools, click on the
+                        <strong>Console</strong> tab.
+                    </p>
+                </div>
+            </details>
+
+            <p>
+                You should now be in the JavaScript Console! Lets do some coding
+            </p>
+
+            <h2>Step 2 - Make a Variable</h2>
+
+            <p>
+                A variable is what we use to store things that we want to use in
+                our code. For example, we can have a variable called
+                <code>price</code> that stores how much money it costs to buy
+                something in our store - lets say $50.
+            </p>
+            <p>
+                <strong
+                    >Type the following JavaScript into the console and press
+                    Enter</strong
+                >. (You only need to type <code>let price = 50</code>)
+            </p>
+
+            <pre class="js"><code>
+&gt; <mark style= "background-color: #87c0b650">let price = 50</mark>
+&lt; undefined
+
+</code></pre>
+
+            <p>
+                Now, '<code>price</code>' holds the value <code>50</code>. You
+                can see this by typing <code>price</code> into the console.
+            </p>
+
+            <pre class="js"><code>
+&gt; price
+&lt; 50
+
+</code></pre>
+
+            <p>
+                Now let's give a name to this product that we can show as a
+                title on our store - to use words as the value of the variable,
+                we use quotation marks (e.g. <code>'words go here'</code>), this
+                type of value is called a <strong>string</strong>.
+            </p>
+
+            <p><strong>Try the following in the console</strong>.</p>
+
+            <pre class="js"><code>
+&gt; let title = 'Bread'
+&lt; undefined
+
+</code></pre>
+
+            <p>
+                Now we have a variable called <code>title</code> with the string
+                value <code>'Bread'</code>!
+            </p>
+            <details>
+                <summary>
+                    Bonus: How can you view the value of <code>title</code>?
+                </summary>
+                <div class="content">
+                    <p>
+                        Just like we did before with price, we just use the name
+                        of the variable to get it's value
+                    </p>
+                    <pre class="js"><code>
+&gt; title
+&lt; 'Bread'
+
+</code></pre>
+                </div>
+            </details>
+
+            <p>
+                That's great, but they're called variables because they can
+                'vary', that is, we can change the value of a variable by
+                <strong>reassigning</strong> it.
+            </p>
+
+            <p>
+                <strong
+                    >Try it out by setting <code>title</code> to something else
+                    you want to sell</strong
+                >.
+            </p>
+
+            <pre class="js"><code>
+&gt; title = 'Cake'
+&lt; 'Cake'
+
+</code></pre>
+
+            <p>
+                We don't need to use <code>let</code> here because we aren't
+                making a new variable, we're using an existing one.
+            </p>
+
+            <details>
+                <summary>
+                    Bonus: Sometimes your variables <b>can't</b> vary!
+                </summary>
+                <div class="content">
+                    <p>
+                        There's actually another way of making a variable,
+                        instead of using the <code>let</code> keyword, we use
+                        <code>const</code>.
+                    </p>
+
+                    <p>This makes a variable that we can't reassign.</p>
+
+                    <pre class="js"><code>
+&gt; const dontVaryMe = 50
+&lt; 50
+
+</code></pre>
+
+                    <pre class="js"><code>
+&gt; dontVaryMe = 100
+&#10060; Uncaught TypeError: Assignment to constant variable.
+
+</code></pre>
+
+                    <p>
+                        This might not seem particularly useful, but many
+                        programming bugs come from variables changing when we
+                        don't expect them to, so it's often nice to 'save us
+                        from ourselves' by making sure a variable doesn't
+                        change.
+                    </p>
+
+                    <p>
+                        There's actually a <b>third</b> way of making a
+                        variable, using <code>var</code>, but we don't use that
+                        because it's evil! Bad things happen when you practice
+                        in the dark arts of <code>var</code>.
+                    </p>
+                </div>
+            </details>
+
+            <h2>Step 3 - Use your variable!</h2>
+
+            <p>
+                Now let's make use of these variables by making a popup to show
+                them.
+            </p>
+
+            <p>
+                Popups are shown using the <code>alert()</code>
+                <strong>function</strong>. Functions are like variables, but
+                instead of holding values, they hold more code!
+                <code>alert()</code> has code to show a popup on our website,
+                all we have to do is put the string we want it to show in the
+                brackets <code>()</code>.
+            </p>
+
+            <p>
+                <strong>Try it out!</strong> Get <code>alert()</code> to say
+                'Hello World', remember that we use quotation marks
+                <code>''</code> because it's a string.
+            </p>
+
+            <pre class="js"><code>
+&gt; alert('Hello World')
+&lt; undefined
+
+</code></pre>
+
+            <details>
+                <summary>
+                    Bonus: What's this <code>undefined</code> thing?
+                </summary>
+                <div class="content">
+                    <p>
+                        Functions like <code>alert()</code> run code, but may
+                        also <strong>return</strong> a value. Just like how a
+                        variable gives it's <strong>value</strong> when used, a
+                        function gives it's <strong>return value</strong>.
+                    </p>
+                    <p>
+                        When a function does not have a return value, like in
+                        <code>alert()</code>'s case, it's return value is
+                        <code>undefined</code>.
+                    </p>
+
+                    <p>
+                        On the other hand, the function
+                        <code>isFinite()</code> returns whether or not the
+                        number you give it is finite, i.e., not infinity.
+                    </p>
+
+                    <pre class="js"><code>
+&gt; isFinite(10)
+&lt; true
+
+</code></pre>
+                    <pre class="js"><code>
+&gt; isFinite(Infinity)
+&lt; false
+
+</code></pre>
+
+                    <p>
+                        <code>true</code> and <code>false</code> are the
+                        <strong>return values</strong> (And just mean yes or
+                        no).
+                    </p>
+                </div>
+            </details>
+
+            <p>
+                That's pretty cool! We can also add the values of our variables
+                to the string that <code>alert()</code> shows.
+            </p>
+
+            <p>
+                Let's show an alert about how much our product costs. We use a
+                plus symbol <code>+</code> to add our variables into our string,
+                <strong>have a go at the following</strong>.
+            </p>
+
+            <pre class="js"><code>
+&gt; alert('The ' + title + ' is $' + price)
+&lt; undefined
+
+</code></pre>
+
+            <p>
+                It may look a little confusing, but all we're doing is adding
+                the value of our variables into the string.
+            </p>
+
+            <h2>Step 4 - Objects</h2>
+            <p>
+                Now, we have our product's display title and price in our two
+                variables, but what happens when we want to sell multiple
+                products? We could make new variables for each title and price
+                of each product, say <code>breadTitle</code> and
+                <code>cakeTitle</code>, but this gets messy quick.
+            </p>
+
+            <p>
+                What if we could group all of our cake-related variables into
+                one variable? Well, we can!
+            </p>
+
+            <p>
+                Using <strong>objects</strong> we can make variables that hold
+                multiple values, each with their own name. We make an object
+                using curly brackets <code>{}</code> with multiple names and
+                values inside. <strong>Have a go at the following</strong>.
+            </p>
+
+            <pre class="js"><code>
+&gt; let cake = {
+      title: 'Cake',
+      price: 50
+  }
+&lt; undefined
+
+</code></pre>
+
+            <p>
+                Now, we have an <strong>object</strong> variable called
+                <code>cake</code> that has the <strong>attributes</strong>
+                <code>title</code> and <code>price</code>.
+            </p>
+
+            <p>
+                To access these attributes, we use something called
+                <strong>dot notation</strong>, using the dot <code>.</code> and
+                then the name of the attribute.
+                <strong
+                    >Try the examples below to use the attributes of
+                    <code>cake</code></strong
+                >.
+            </p>
+
+            <pre class="js"><code>
+&gt; cake.title
+&lt; 'Cake'
+
+</code></pre>
+
+            <pre class="js"><code>
+&gt; cake.price = 20
+&lt; 20
+
+</code></pre>
+
+            <pre class="js"><code>
+&gt; alert('The ' + cake.title + ' costs $' + cake.price)
+&lt; undefined
+
+</code></pre>
+
+            <p class="callout success">
+                And with that, you've completed Level 1 and are now a variable
+                expert! &#129489;&zwj;&#128187;
+            </p>
+        </section>
+
+        <section>
+            <h1>Level 2 - Make a JavaScript File</h1>
+
+            <h2>Step 1: Create the script.js file</h2>
+
+            <p>
+                Now, it's all well and good being able to code in the console,
+                but we want to use JavaScript to enhance our website. This means
+                adding another file to our website - a
+                <code>script.js</code> file to hold all of our JavaScript code.
+            </p>
+
+            <p>
+                <strong
+                    >Press the 'New file' button in VSCode and name the file
+                    <code>script.js</code></strong
+                >.
+            </p>
+
+            <table>
+                <th>
+                    <img
+                        src="images/vs_code_new_file.png"
+                        alt="New file button in VSCode"
+                    />
+                </th>
+                <th>
+                    <img
+                        src="images/vs_code_script_naming.png"
+                        alt="Naming the new file script.js"
+                    />
+                </th>
+            </table>
+
+            <div>
+                <p>Remember:</p>
+                <ul>
+                    <li>
+                        <p>
+                            <code class="html">index.html</code>: The website's
+                            structure
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <code class="js">script.js</code>: The JavaScript
+                            code that makes the website interactive
+                        </p>
+                    </li>
+                    <li>
+                        <p>
+                            <code class="css">style.css</code>: The look and
+                            style of the website
+                        </p>
+                    </li>
+                </ul>
+            </div>
+
+            <h2>Step 2: Put some content in your script.js file</h2>
+
+            <p>
+                <strong>Now, let's put some code in our script</strong>, The
+                following function is like <code>alert()</code>, but it sends
+                the string to the console instead of a popup.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+console.log('Hello World')
+
+</code></pre>
+
+            <div class="callout info">
+                <p>
+                    You might recognise from earlier that
+                    <code>console</code> is an <b>object</b> and
+                    <code>log()</code> is a <b>function</b> that
+                    <code>console</code> has as an <b>attribute</b>.
+                </p>
+            </div>
+
+            <p>
+                Now, like with our css file, we need to link the
+                <code class="js">script.js</code> file in our
+                <code class="html">index.html</code>.
+                <strong
+                    >Jump over to your
+                    <code class="html">index.html</code>
+                    and add the following <code>&lt;script&gt;</code> tag to the
+                    bottom of your html file (between the closing
+                    <code>&lt;/body&gt;</code> tag and the closing
+                    <code>&lt;/html&gt;</code> tag) </strong
+                >.
+            </p>
+
+            <pre class="html"><code title="index.html" language="HTML">
+        ...
+        &lt;/body&gt;
+    <mark class="highlight">&lt;script src="script.js"&gt;&lt;/script&gt;</mark>
+&lt;/html&gt;
+
+</code></pre>
+
+            <p>
+                Now, refresh your website, and you should see your message in
+                the console!
+            </p>
+
+            <h2>Step 3: Add your products</h2>
+
+            <p>
+                A special variable that can hold more than one value or object
+                is called an <strong>array</strong>.
+            </p>
+
+            <p>
+                You can think of it like a container for storing multiple store
+                items under a single variable name. We can use it to make our
+                code easier to read. For instance, we can name our
+                <strong>array</strong> <code>fruits</code>. Inside our 'fruit
+                container' we can store different kinds of fruits, like apple,
+                banana and strawberry.
+            </p>
+
+            <p>
+                To declare an array we use the <code>let</code> keyword followed
+                by the array's name, for example, <code>products</code>. Then we
+                assign the items we want in our array inside square brackets.
+            </p>
+
+            <p>Let's add some store items into our products array.</p>
+
+            <p>
+                <strong
+                    >Head back to your <code>script.js</code> file and create a
+                    variable called <code>products</code> above
+                </strong>
+                <code>console.log('Hello World')</code>
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+let products = [
+
+
+
+]
+            </code></pre>
+
+            <p>
+                Our <code>products</code> variable will hold 5 product
+                <strong>objects</strong>.
+            </p>
+            <p>
+                Each product <strong>object</strong> will look like the below
+                and it needs to sit <b>inside</b> our
+                <code>products</code> array.
+            </p>
+            <p>
+                <strong
+                    >Copy the below code and add in 5 of them between the sqaure
+                    brackets of <code>products</code>.</strong
+                >
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+
+{
+    title: "Cake",
+    description: "Tasty cake",
+    image: "cake.png",
+    imageAlt: "A blue monster cake",
+    price: 10
+},
+
+</code></pre>
+
+            <p class="callout warning">
+                Make sure you frequently save your work!
+            </p>
+
+            <h2>Step 4: Customise your products</h2>
+
+            <p>
+                You can customise the 5 products in your store by changing the
+                values for <code>title</code>, <code>description</code>,
+                <code>image</code>, <code>imageAlt</code> or <code>price</code>.
+            </p>
+            <p>For example change <b>"Cake"</b> to <b>"Puppies"</b>.</p>
+            <pre><code>
+{
+    title: <strong>"Puppies"</strong>,
+    ...
+    ...
+},
+
+</code></pre>
+            <br />
+
+            <h4>Adding images</h4>
+            <p>Let's make our store a bit more visual by adding images.</p>
+            <p>
+                See if you can find a cool image on the internet that suits your
+                chosen style. Then save it to the <code>images</code> folder in
+                your project. It should then appear in your project in VS Code
+                on the left under the images folder.
+            </p>
+            <p>
+                Enter the file name (including the file format eg .png) between
+                the quotation marks next to <code>image</code> in your chosen
+                store item. Ie. <code>image: "cake.png",</code> Make sure you
+                also update the <code>imageAlt</code> to reflect the description
+                of the image so our store is accessible to screen readers and
+                people with visual impairment.
+            </p>
+
+            <p>
+                <strong
+                    >Have a play and edit the products in your store.</strong
+                >
+            </p>
+
+            <details>
+                <summary>
+                    Get a hint on what your products should look like
+                </summary>
+                <div class="content">
+                    In your <code>script.js</code> file your
+                    <code>products</code> variable should look something like
+                    this.
+                    <pre class="js"><code title="script.js" language="JS">
+
+let products = [
+    {
+        title: "Cake",
+        description: "Tasty cake",
+        image: "cake.png",
+        imageAlt: "A blue monster cake",
+        price: 10
+    },
+    {
+        title: "Milk",
+        description: "Who doesn't like milk",
+        image: "milk.jpg",
+        imageAlt: "A woman drinking a tall glass of milk",
+        price: 1
+    },
+    {
+        title: "Hat",
+        description: "You want a hat? Here it is.",
+        image: "hat.jpeg",
+        imageAlt: "A established fellow wearing a fez",
+        price: 205
+    },
+    {
+        title: "Crisp High Five",
+        description: "All the encouragement you could want",
+        image: "hi5.jpg",
+        imageAlt: "Dog gives man a solid hi five",
+        price: 3847
+    },
+    {
+        title: "Milk",
+        description: "Who doesn't like milk",
+        image: "milk.jpg",
+        imageAlt: "A woman drinking a tall glass of milk",
+        price: 1
+    }
+]
+
+</code></pre>
+                </div>
+            </details>
+
+            <br />
+            <p class="callout success">Woo! You've completed Level 2! 🍰🐶</p>
+        </section>
+
+        <section>
+            <h1>Level 3 - Working with Arrays and Functions</h1>
+            <p>In this section, we will cover:</p>
+            <ul>
+                <li>Accessing items in an array</li>
+                <li>
+                    Accessing individual properties of objects within an array
+                </li>
+                <li>
+                    Using a "for" loop to access each item in an array in turn
+                </li>
+                <li>How to create a function</li>
+            </ul>
+
+            <h2>Step 1: Accessing Items in an Array</h2>
+
+            <p>
+                In Level 2, we printed a simple message "Hello, World" to our
+                console using <code>console.log</code>. We also created an array
+                called <b>products</b> in our <code>script.js</code> file. This
+                time, let's try logging our entire array to the console.
+            </p>
+
+            <p>
+                In the script.js file, replace 'Hello World' with the name of
+                your array (<b>products</b>), as per the example below. Because
+                products is the name of a variable and not a string, you do not
+                need to put quotation marks around it.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+console.log(products)
+                </code></pre>
+
+            <p class="callout warning">
+                IMPORTANT! Double check your script.js file and ensure that this
+                line appears BELOW the lines where the products array was
+                created.
+            </p>
+
+            This is because the code in the script.js file will execute in order
+            from top to bottom. If <code>console.log(products)</code> appears
+            before the products array is created, then you will get an error as
+            it is impossible to log something that has not been created yet.
+
+            <p>
+                Next, save your changes and refresh your browser window. When
+                you open the JavaScript console as you did in Level 1 Step 1,
+                you should see something like the following:
+            </p>
+
+            <pre class="js"><code>
+(5) [{…}, {…}, {…}, {…}, {…}]
+            </code></pre>
+
+            <p>
+                This output indicates that there is an array consisting of five
+                objects, and each object contains a number of properties. You
+                can expand this output further by clicking on the small triangle
+                symbol next to the array, which will allow you to view more
+                detail about each individual object in the array. Below is an
+                example of what it should look like when you expand it. The
+                actual content of each object will depend on what you entered in
+                the previous section.
+            </p>
+
+            <pre class="js"><code>
+0: {title: 'Cake', description: 'Tasty cake', image: 'cake.png', imageAlt: 'A blue monster cake', price: 10}
+1: {title: 'Milk', description: "Who doesn't like milk", image: 'milk.jpg', imageAlt: 'A woman drinking a tall glass of milk', price: 1}
+2: {title: 'Hat', description: 'You want a hat? Here it is.', image: 'hat.jpeg', imageAlt: 'A established fellow wearing a fez', price: 205}
+3: {title: 'Crisp High Five', description: 'All the encouragement you could want', image: 'hi5.jpg', imageAlt: 'Dog gives man a solid hi five', price: 3847}
+5: {title: 'Milk Again', description: "Who doesn't like milk", image: 'milk.jpg', imageAlt: 'A woman drinking a tall glass of milk', price: 1}
+length: 5
+            </code></pre>
+
+            <p>
+                So what do we do if we want to log only <b>one</b> object from
+                the array, and not the whole array?
+            </p>
+
+            <p>
+                Each item in an array has an "index number" (or "index" for
+                short). The index represents an item's position in the array,
+                starting from 0 and counting upwards. In the example above, you
+                can see that the first object has an index of 0, the second one
+                has an index of 1, and so on. This index can be used to retrieve
+                a specific object from the array.
+            </p>
+
+            <p>
+                To do so, change your <code>console.log</code> by adding square
+                brackets containing the specific index number of the item you
+                want, as follows:
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+console.log(products[0]);
+            </code></pre>
+
+            <p>
+                Once you save and refresh your page, the output in the console
+                will look something like this (with the content being whatever
+                data you entered in Section 2, rather than this example data):
+            </p>
+
+            <pre class="js"><code>
+{title: 'Cake', description: 'Tasty cake', image: 'cake.png', imageAlt: 'A blue monster cake', price: 10}
+            </code></pre>
+
+            <p>
+                Try logging different items using their index numbers, and see
+                if the data that is logged to the console matches what you
+                expect!
+            </p>
+
+            <p class="callout warning">
+                REMEMBER! <br />
+                Arrays are zero indexed, which means that the index of the first
+                item is always 0, not 1.
+            </p>
+
+            <h2>Step 2: Accessing Properties of Objects in an Array</h2>
+
+            <p>
+                We've learned how to log our array to the console, and how to
+                access individual items of the array and log those as well. But
+                what if we don't want to log an entire object, and instead only
+                want to log the value of one property, such as "title"?
+            </p>
+
+            <p>
+                Individual properties of an object can be accessed using
+                something called <b>dot notation</b>. We've seen this before in
+                Level 1 step 4 of this runsheet, so scroll up and read through
+                again if you need to refresh your memory.
+            </p>
+
+            <p>
+                We can combine the technique we just learned with dot notation
+                by selecting the array item we want to access using its index,
+                then typing a full stop followed by the name of the specific
+                property you want to log after the square brackets.
+            </p>
+
+            <p>
+                In the example below, we are logging the <b>title</b> property
+                of the first item in the <b>products</b> array (remember, the
+                first product has an index of 0).
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+console.log(products[0].title);
+            </code></pre>
+
+            <p>The console should show the title of your first product:</p>
+
+            <pre class="js"><code>
+Cake
+            </code></pre>
+            <br />
+            <details>
+                <summary>Bonus: Making Changes</summary>
+                <div class="content">
+                    <p>
+                        Now that we have learned how to <b>access</b> the
+                        properties of an individual object in an array, what if
+                        we want to change a property in some way?
+                    </p>
+                    <p>
+                        Earlier in this runsheet (Level 1, Step 2), we talked
+                        about <b>reassignment</b>. We learned that even if a
+                        variable already has a value assigned, we can assign a
+                        new value and overwrite the previous one. The same thing
+                        will work with properties of objects. <br />
+                        Try adding an extra line above your console log, as in
+                        the example below:
+                    </p>
+
+                    <pre class="js"><code title="script.js" language="JS">
+products[0].title = "Chocolate Cake"
+console.log(products[0].title);
+                </code></pre>
+                    <p>
+                        Now that we have assigned the value "Chocolate Cake" to
+                        the title property of the first object in our array, the
+                        output in the console will be:
+                    </p>
+
+                    <pre class="js"><code>
+Chocolate Cake
+                </code></pre>
+                </div>
+            </details>
+
+            <p>
+                Can we use dot notation to access and log the value of the title
+                property for EVERY item in the array at once?
+            </p>
+
+            <p>
+                Not exactly. Try logging <code>products.title</code> without
+                specifying an item's index, as below:
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+console.log(products.title);
+            </code></pre>
+
+            <p>
+                You'll find that the output is <code>undefined</code>. In order
+                to achieve what we want here, we'll have to use something called
+                a "for loop", which will be explained in the next section.
+            </p>
+
+            <h2>Step 3: "For" Loops</h2>
+            <p>
+                So far, we have explored the concept of <b>arrays</b>, and have
+                seen how to access a single item from an array using its
+                <b>index</b>. We've also learned how to access a single property
+                of an object using <b>dot notation</b>. If we want to access one
+                property of ALL the items in the array and log all of them to
+                the console, we can use something called a "for" loop to achieve
+                this efficiently.
+            </p>
+            <p>
+                A loop is something that iterates (repeats over and over again)
+                until a condition is met. A "for" loop is a specific kind of
+                loop. Try removing any console logs you have remaining in your
+                code, and add the code block below your products array:
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+for(let i = 0; i &lt; products.length; i++) {
+    console.log(products[i].title)
+}
+            </code></pre>
+
+            <p>
+                If we break this down, the "for" loop in the example above
+                essentially says: <br />
+                Create a variable called i and set its value to 0. Then:
+            </p>
+            <ol>
+                <li>
+                    Check if the value of <code>i</code> is less than the length
+                    of the array called <code>products</code>.
+                </li>
+                <li>
+                    If it is, access the title property of the object in the
+                    <code>products</code> array with an index equal to
+                    <code>i</code> and log it to the JavaScript console.
+                </li>
+                <li>Increment <code>i</code> by one.</li>
+                <li>
+                    Repeat from step 1 until the value of <code>i</code> is no
+                    longer less than the length of the
+                    <code>products</code> array, at which point stop.
+                </li>
+            </ol>
+
+            <details>
+                <summary>
+                    What exactly does the code inside the brackets mean?
+                </summary>
+                <div class="content">
+                    <h2>
+                        There are three seperate expressions inside the
+                        brackets.
+                    </h2>
+                    <ol>
+                        <li>
+                            <code>let i = 0;</code> This is an initialisation
+                            expression, which is creating a variable called
+                            <code>i</code>, and initializing it to 0. It
+                            executes before the loop starts, and is being used
+                            here to create a variable that can be used as a
+                            counter to keep track of how many times the loop has
+                            executed.
+                        </li>
+                        <li>
+                            <code>i &lt; products.length;</code> This is a
+                            condition. It describes under what circumstances the
+                            loop should execute. If the condition is met, the
+                            loop will execute, otherwise it will stop. In our
+                            example, it means that if the value of
+                            <code>i</code> is less than the length of the
+                            <code>products</code> array (or in other words, less
+                            than the number of objects in the aray), the loop
+                            should execute.
+                        </li>
+                        <li>
+                            <code>i++</code> This is a final-expression, which
+                            executes at the end of each loop iteration. Normally
+                            this is used to add 1 to the counter. In our
+                            example, it simply means "increment i by 1".
+                        </li>
+                    </ol>
+                </div>
+            </details>
+
+            <p>
+                When you reload the page and check the console, the output
+                should look something like this:
+            </p>
+
+            <pre class="js"><code>
+Cake
+Milk
+Hat
+Crisp High Five
+Milk Again
+            </code></pre>
+
+            <h2>Step 4: Functions</h2>
+
+            <p>
+                A function is a block of code designed to perform a task. It
+                will not be executed automatically; it needs to be invoked.
+            </p>
+
+            <p>
+                Functions are useful because they allow us to separate our code
+                into segments representing different tasks, and reuse these
+                segments in different situations. Let's try turning our "for"
+                loop into a function. To do this, we need:
+            </p>
+            <ul>
+                <li>The "function" keyword</li>
+                <li>A name for our function.</li>
+                <li>
+                    Normal brackets containing parameters (a parameter
+                    represents anything our function needs as input- in this
+                    case, it needs an array of products)
+                </li>
+                <li>
+                    Curly brackets to hold the actual code that makes up our
+                    function (in this case, our "for" loop)
+                </li>
+            </ul>
+
+            <p>First, add the following to your script.js file:</p>
+            <pre class="js"><code title="script.js" language="JS">
+function addProductCard(products) {
+
+}
+            </code></pre>
+
+            <p>
+                Next, cut and paste your "for" loop so that it is contained
+                within the curly brackets of your function, as shown below:
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+function addProductCard(products) {
+<mark style= "background-color: #87c0b650">    for(let i = 0; i &lt; products.length; i++) {
+        console.log(products[i].title)
+    }</mark>
+}
+            </code></pre>
+
+            <p>
+                There's only one thing left to do, which is to invoke your
+                function by typing the function name (addProductCard)
+                underneath, followed by brackets. Make sure you pass the
+                products array to the function by including it in the brackets.
+                The completed code is shown below:
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+function addProductCard(products) {
+    for(let i = 0; i &lt; products.length; i++) {
+        console.log(products[i].title)
+    }
+}
+
+<mark style= "background-color: #87c0b650">addProductCard(products);</mark>
+            </code></pre>
+
+            <details>
+                <summary>Function and Parameter Names</summary>
+                <div class="content">
+                    <p>
+                        Functions can be named whatever you want. It's best
+                        practice to create a name that describes what your
+                        function does, and they should always be written in
+                        camelCase (lower case first letter, and after that use
+                        an upper case letter to start each new word). Something
+                        like "logProductTitles" would be perfect here, but we
+                        have used addProductCard instead because we're going to
+                        be changing what this function does a little later on.
+                    </p>
+                    <p>
+                        Parameter names should be all lower case, and should
+                        describe the thing you are passing to the function. In
+                        this case, we are passing an array of products to our
+                        function.
+                    </p>
+                </div>
+            </details>
+
+            <p class="callout success">
+                GREAT JOB! You made it to the end of Level 3! &#129497;
+            </p>
+        </section>
+
+        <section>
+            <h1>Level 4 - Display products</h1>
+            <p>
+                We now have a for-loop where it's going through each item within
+                our list of objects. Right now it's only reading out the product
+                name so we can tell it's working by reading the console, but we
+                can make it display each of these products on our page, along
+                with their description/price/image.
+            </p>
+            <h2>Step 1 - HTML Changes</h2>
+            <p>
+                For the products to display on the page, we need to make a
+                <code>section</code> within our HTML for the products to be in.
+                So for this quick change, you need to
+                <b>open your index.html file</b> and add in the
+                <mark class="highlight">highlighted</mark>
+                lines <b>at the bottom</b> of your HTML code.
+            </p>
+            <pre class="html"><code title="index.html" language="HTML">
+      ...
+      <mark style= "background-color: #87c0b650">&lt;section&gt;</mark>
+          <mark style= "background-color: #87c0b650">&lt;h2&gt;Top Products&lt;/h2&gt;</mark>
+          <mark style= "background-color: #87c0b650">&lt;div id="topproductlist" class="itemlist"&gt;&lt;/div&gt;</mark>
+      <mark style= "background-color: #87c0b650">&lt;/section&gt;</mark>
+  &lt;/body&gt;
+  &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/html&gt;
+          </code></pre>
+            <p>
+                Thats it! you don't have to do anymore HTML code. Once you're
+                done with this level, your products will display in this new
+                <code>section</code>.
+            </p>
+            <h2>Step 2 - Back to Javascript</h2>
+            <p>
+                Now that we have a <code>div</code> in our HTML for our top
+                products list, we need to assign it to a variable in our
+                javascript file to use it. We'll be using a new variable we'll
+                call <code>topProductsElement</code>, which is the element we
+                will be selecting using <code>.getElementById</code>. This just
+                means that the <code>div</code> element we made in our HTML
+                earlier to contain our top products list is what we'll be using
+                here in our javascript. The line of code should be as below, and
+                you should put it
+                <b>above your code for addProductCard() function, by itself</b>.
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+topProductsElement = document.getElementById("topproductlist");
+          </code></pre>
+            <p>
+                Now this next part is a little tricky. We're going to be adding
+                our <code>topProductsElement</code> variable as a new input for
+                our <code>addProductCard()</code> function.
+            </p>
+            <p>
+                All we need to do is add in an extra word to the brackets of
+                <code>addProductCard()</code> (and a comma between them). We
+                mention that function twice, so we need to
+                <b>make the change to both</b>. The
+                <mark class="highlight">highlighting</mark> on the code below
+                should show you what we're adding and where.
+            </p>
+            <p>
+                <b>Don't just copy-paste all the code</b> in the blocks into
+                your JS file. Only add the
+                <mark class="highlight">highlighted</mark>
+                parts to your existing code.
+            </p>
+            <p>For the addProductCard() function itself:</p>
+            <pre class="js"><code title="script.js" language="JS">
+function addProductCard(<mark style= "background-color: #87c0b650">parentElement,</mark> products) {
+    for (let i = 0; i < products.length; i++) {
+        console.log(products[i].title)
+    }
+}
+          </code></pre>
+            <p>
+                For the line of code we added to invoke the function at the end
+                of Level 3:
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+        ...
+        console.log(products[i].title)
+    }
+}
+
+addProductCard(<mark style= "background-color: #87c0b650">topProductsElement,</mark> products);
+          </code></pre>
+            <p>
+                With both mentions of addProductCard() in your code now have two
+                inputs, you're ready to move onto building up the function to do
+                more.
+            </p>
+            <h2>Step 3 - Completing Our Function</h2>
+            <p>
+                Make sure you are still <b>in your script.js file</b> in VS
+                code. To get started, we're going to add in two lines
+                <b>within the for-loop</b> you created in Level 3.
+            </p>
+            <p>
+                The first line of code uses
+                <code>document.createElement</code> so that in each loop (so for
+                each product in our list) it will create a <code>div</code> for
+                the product and its information. The second line of code uses
+                <code>setAttribute</code> to set this <code>div</code> to be an
+                <b>"itemcard"</b>
+                class, just like how we did ourselves in previous workshops.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+function addProductCard(parentElement, products) {
+  for (let i = 0; i < products.length; i++) {
+      console.log(products[i].title)
+      <mark style= "background-color: #87c0b650">const card = document.createElement("div")</mark>
+      <mark style= "background-color: #87c0b650">card.setAttribute("class", "itemcard")</mark>
+  }
+}
+          </code></pre>
+
+            <p>
+                Now that the for-loop is adding in a <code>div</code> for each
+                product, we need to start populating those with the product's
+                information. To start, we're going to add in the product's
+                <b>image</b>. To do this, we're again using
+                <code>document.createElement</code> to make an
+                <code>img</code> HTML element.
+            </p>
+            <p>
+                The two lines of code after that use
+                <code>setAttribute</code> to set the <code>src</code> and
+                <code>alt</code> attributes like we've done manually before.
+                Then finally, the last line appends the image that we have
+                defined to the card we made on the page earlier.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+...
+const card = document.createElement("div")
+card.setAttribute("class", "itemcard")
+
+<mark style= "background-color: #87c0b650">const image = document.createElement("img")</mark>
+<mark style= "background-color: #87c0b650">image.setAttribute("src", "images/" + products[i].image)</mark>
+<mark style= "background-color: #87c0b650">image.setAttribute("alt", products[i].imageAlt)</mark>
+<mark style= "background-color: #87c0b650">card.append(image)</mark>
+...
+          </code></pre>
+
+            <p>Next, we're going to add in the product's <b>title</b>.</p>
+            <p>
+                In our first line of code, we create a <code>h2</code> heading
+                HTML element for our product title. In the second line of code,
+                we define the <code>innerText</code> of that heading to be the
+                same as what we put in the <code>title</code> variable in your
+                product's object. The last line makes sure you are actually
+                adding the title you've made into the card, the same way we did
+                with the image code before.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+...
+const image = document.createElement("img")
+image.setAttribute("src", "images/" + products[i].image)
+image.setAttribute("alt", products[i].imageAlt)
+card.append(image)
+
+<mark style= "background-color: #87c0b650">const title = document.createElement("h2")</mark>
+<mark style= "background-color: #87c0b650">title.innerText = products[i].title</mark>
+<mark style= "background-color: #87c0b650">card.append(title)</mark>
+...
+          </code></pre>
+
+            <p>
+                Last but not least, we want to include our <b>price</b> for the
+                product as defined in our object list.
+            </p>
+            <p>
+                The execution is similar to the title, only this one will be a
+                <code>&lt;p&gt;</code> element. Just like before, we create a
+                variable for it, add in the information directly from the
+                current product object, and then attach the completed price to
+                the card.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+...
+const title = document.createElement("h2")
+title.innerText = products[i].title
+card.append(title)
+
+<mark style= "background-color: #87c0b650">const price = document.createElement("p")</mark>
+<mark style= "background-color: #87c0b650">price.innerText = "$" + products[i].price</mark>
+<mark style= "background-color: #87c0b650">card.append(price)</mark>
+...
+          </code></pre>
+
+            <p>
+                The finishing touch is to add a line of code that adds the now
+                completed card into the div we opened for it.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+      ...
+      const price = document.createElement("p")
+      price.innerText = "$" + products[i].price
+      card.append(price)
+
+      <mark style= "background-color: #87c0b650">parentElement.append(card)</mark>
+  }
+}
+          </code></pre>
+
+            <p>
+                If you <b>save your scripts.js code</b> and
+                <b>refresh your browser</b> you should see the changes once your
+                page loads. If it all went well, your new line of products
+                should appear on your page like this:
+            </p>
+            <img
+                src="./images/finishedAddProductCard.PNG"
+                alt="finished AddProductCard() result"
+            />
+            <p>
+                Only it will be showing your personalised product
+                titles/prices/images from your own <code>products</code> list of
+                course - so get creative with it!
+            </p>
+
+            <details>
+                <summary>
+                    If you think your code is broken, here's what your
+                    addProductCard() function should look like when finished
+                </summary>
+                <pre style="user-select: none"><code>
+function addProductCard(parentElement, products) {
+  for (let i = 0; i < products.length; i++) {
+      const card = document.createElement("div")
+      card.setAttribute("class", "itemcard")
+
+      // Add image
+      const image = document.createElement("img")
+      image.setAttribute("src", "images/" + products[i].image)
+      image.setAttribute("alt", products[i].imageAlt)
+      card.append(image)
+
+      // Add title
+      const title = document.createElement("h2")
+      title.innerText = products[i].title
+      card.append(title)
+
+      // Add price
+      const price = document.createElement("p")
+      price.innerText = "$" + products[i].price
+      card.append(price)
+
+      // Add the cards
+      parentElement.append(card)
+  }
+}
+              </code></pre>
+            </details>
+            <p class="callout success">
+                You finished the final level! That's it for the base content,
+                but if you're looking for more, try out the Extensions!
+                &#128511;
+            </p>
+            <hr />
+        </section>
+
+        <!-- Extensions -->
+        <section>
+            <h1>Extensions</h1>
+            <h2>Horizontal Scroll</h2>
+            <p>
+                Right now if we have more than 5 products, the list is pretty
+                squished. One solution to this is allowing our list to
+                'overflow' off the page. Once you have the products overflowing,
+                the page automatically adds in a scroll bar to allow you to see
+                everything.
+            </p>
+            <p>
+                We'll be adding a new class called 'scrollable' which will
+                contain all the CSS going forward. First lets make sure our Top
+                Products list belongs to this new 'scrollable' class by adding
+                in the highlighted word in the HTML like so:
+            </p>
+            <pre class="html"><code title="index.html" language="HTML">
+&lt;section&gt;
+    &lt;h2&gt;Top Products&lt;/h2&gt;
+    &lt;div id="topproductlist" class="itemlist <mark style= "background-color: #87c0b650">scrollable</mark>"&gt;&lt;/div&gt;
+&lt;section&gt;
+            </code></pre>
+            <p>
+                Now we'll move onto our CSS and define this new class. We'll add
+                in <code>overflow-x</code> which allows for horizontal overflow
+                on our page like so:
+            </p>
+            <pre class="css"><code title="style.css" language="CSS">
+.scrollable {
+    overflow-x: auto;
+    justify-content: space-between;
+}
+            </code></pre>
+            <p>
+                However, the horizontal overflow won't work correctly unless we
+                state that an <code>itemcard</code> needs to have a minimum
+                width. This is because flexbox will by default squish the cards
+                to fit the space provided. To fix it we'll add another bit of
+                css code as below:
+            </p>
+            <pre class="css"><code title="style.css" language="CSS">
+.scrollable .itemcard{
+    min-width: 300px;
+}
+            </code></pre>
+            <p>
+                To properly test this, you may need to add more products to your
+                current <code>products[]</code> list in your Javascript code.
+                Try adding in a bunch more products now that you don't have a
+                limit.
+            </p>
+            <h2>Scroll Styling</h2>
+            <p>
+                The default scroll bar is a little bland, so to spruce that up
+                we can use some more CSS that targets specifically the scroll
+                bar within our product list.
+            </p>
+            <p>
+                There are 3 things we'll be changing for the scrollbar. The
+                scrollbar itself, the the track of the scrollbar, and the
+                draggable scroller (or thumb) that's on the track. We'll be
+                adding the three bits of CSS to address these parts with some
+                settings that suite our default style. Feel free to tweak the
+                values to make it suit your own unique theme.
+            </p>
+            <p>
+                Add in the CSS below, save your files, and refresh your page to
+                see the difference:
+            </p>
+            <pre class="css"><code title="style.css" language="CSS">
+section ::-webkit-scrollbar {
+    width: 20px;
+}
+
+section ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px #c0c0c0;
+    border-radius: 10px;
+}
+section ::-webkit-scrollbar-thumb {
+    -webkit-box-shadow: inset 0 0 6px #c0c0c0;
+    border-radius: 10px;
+}
+            </code></pre>
+            <p>
+                You may have noticed that <code>::-webkit-scrollbar</code> isn't
+                like any CSS code we've used before. <code>::</code> denotes a
+                'pseudo-element', and <code>web-kit</code> is used for rendering
+                content within Safari and Chrome browsers.
+            </p>
+            <h2>Auto-Scrolling</h2>
+            <p>
+                Now we're going to get into something a bit more complicated.
+                We're going to animate our products list to scroll on its own,
+                and when it hits the end of the scroll, we'll make it come back
+                to the start.
+            </p>
+            <p>
+                To start, we'll add in a couple variables
+                <b>in our Javascript file</b>. We'll add in a variable for the
+                amount scrolled creatively called <code>scrollAmount</code>, and
+                a variable for whether or not we are scrolling called
+                <code>isScrolling</code> which we will have set as true, so that
+                automatic scrolling is on by default.
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+let scrollAmount = 0;
+let isScrolling = true;
+            </code></pre>
+            <p>
+                This code can be put at the bottom of your file by itself, it
+                shouldn't be inside a function.
+            </p>
+            <p>
+                Underneath these 2 statements we'll have a function for the
+                animation of the automatic scrolling itself. The code can be
+                found below:
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+setInterval(function () {
+    const pauseMargin = 100;
+    const total = cardList.scrollWidth - cardList.clientWidth + pauseMargin;
+    if (isScrolling) {
+        scrollAmount = (scrollAmount + 1) % total;
+        scrollToPlace(scrollAmount);
+    } else {
+        scrollAmount = cardList.scrollLeft;
+    }
+}, 10);
+            </code></pre>
+            <p>
+                The logic here might be hard to understand, and that's okay,
+                this is the Extensions section. If you're curious, it is
+                essentially adding 1 to the <code>scrollAmount</code> to keep
+                track of how far it has scrolled across, and uses
+                <code>scrollToPlace()</code> to go to that spot. It uses
+                <i>modulo</i>, or <code>%</code> in code form, to tell if it has
+                reached the end, and loops back to the start if it has. The
+                <code>pauseMargin</code> is how long it waits before snapping
+                you back to the beginning.
+            </p>
+            <p>
+                Assuming your code works, the products list should automatically
+                scroll to the right, but what if you're trying to click on a
+                product? you'd want it to stop right? To do that we can add in
+                some more Javascript code for what the page should do when your
+                mouse is hovering over the product list. The code is as below:
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+cardList.onmouseover = function () {
+    isScrolling = false;
+};
+
+cardList.onmouseout = function () {
+    isScrolling = true;
+};
+            </code></pre>
+            <p>
+                Make sure this code is placed underneath your statements for
+                <code>isScrolling</code> for this to work. What this code does,
+                is it sets <code>isScrolling</code> to false when the mouse is
+                hovering over our list, and once it isn't hovering over it
+                anymore, it goes back to being set to true. This will stop and
+                start the animation as desired, otherwise the mouse would stop
+                it and the animation would stay off.
+            </p>
+        </section>
+        <section>
+            <h1>Additional Resources</h1>
+            <ul>
+                <li>
+                    Learn HTML -
+                    <a href="https://www.w3schools.com/html/"
+                        >https://www.w3schools.com/html/</a
+                    >
+                </li>
+                <li>
+                    Learn CSS -
+                    <a href="https://www.w3schools.com/css/"
+                        >https://www.w3schools.com/css/</a
+                    >
+                </li>
+                <li>
+                    Learn JS -
+                    <a href="https://www.w3schools.com/js/"
+                        >https://www.w3schools.com/js/</a
+                    >
+                </li>
+                <li>
+                    Detailed Guide to Flexbox Layout -
+                    <a
+                        href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/"
+                        >https://css-tricks.com/snippets/css/a-guide-to-flexbox/</a
+                    >
+                </li>
+            </ul>
+        </section>
+    </body>
+    <script src="../utils/lib/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</html>
