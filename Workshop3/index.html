@@ -1696,12 +1696,12 @@ let isScrolling = true;
             <pre class="js"><code title="script.js" language="JS">
 setInterval(function () {
     const pauseMargin = 100;
-    const total = cardList.scrollWidth - cardList.clientWidth + pauseMargin;
+    const total = topProductsElement.scrollWidth - topProductsElement.clientWidth + pauseMargin;
     if (isScrolling) {
         scrollAmount = (scrollAmount + 1) % total;
-        scrollToPlace(scrollAmount);
+        topProductsElement.scrollLeft = scrollAmount;
     } else {
-        scrollAmount = cardList.scrollLeft;
+        scrollAmount = topProductsElement.scrollLeft;
     }
 }, 10);
             </code></pre>
@@ -1710,8 +1710,8 @@ setInterval(function () {
                 this is the Extensions section. If you're curious, it is
                 essentially adding 1 to the <code>scrollAmount</code> to keep
                 track of how far it has scrolled across, and uses
-                <code>scrollToPlace()</code> to go to that spot. It uses
-                <i>modulo</i>, or <code>%</code> in code form, to tell if it has
+                <code>topProductsElement.scrollLeft</code> to go to that spot.
+                It uses <i>modulo</i>, or <code>%</code> in code form, to tell if it has
                 reached the end, and loops back to the start if it has. The
                 <code>pauseMargin</code> is how long it waits before snapping
                 you back to the beginning.
@@ -1724,11 +1724,11 @@ setInterval(function () {
                 mouse is hovering over the product list. The code is as below:
             </p>
             <pre class="js"><code title="script.js" language="JS">
-cardList.onmouseover = function () {
+topProductsElement.onmouseover = function () {
     isScrolling = false;
 };
 
-cardList.onmouseout = function () {
+topProductsElement.onmouseout = function () {
     isScrolling = true;
 };
             </code></pre>
