@@ -219,33 +219,54 @@ tr {
     font-size: 14px;
 }
 
+.snippetresult > pre {
+    display: contents; /* Probably not ideal */
+}
+
 /* Callouts */
 
-.callout.info,
-.callout.warning,
-.callout.success {
-    display: flex;
-    align-items: center;
-    padding: 5px;
+.callout {
+    position: relative;
+    padding: 10px;
     margin: 25px 0px;
     border-radius: 15px;
     font-weight: 600;
+    border: 2px solid #bdbdbd;
+    background-color: #f5f5f520;
+    color: #565656;
 }
 
-.callout:before {
+.callout:is(.info, .warning, .success):before {
     width: 48px;
-    height: 48px;
-    display: inline-block;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
     content: "";
     -webkit-mask-size: cover;
     mask-size: cover;
-    margin-right: 10px;
+}
+
+.callout:is(.info, .warning, .success) {
+    padding-left: 48px;
 }
 
 .callout.info {
     border: 2px solid #5da0fd;
     background-color: #5ea0fd20;
     color: #2d5286;
+}
+
+.callout.success {
+    border: 2px solid #87c0b6;
+    background-color: #87c0b620;
+    color: #3e756a;
+}
+
+.callout.warning {
+    border: 2px solid #ffcb77;
+    background-color: #ffcb7720;
+    color: #86642d;
 }
 
 .callout.info:before {
@@ -256,24 +277,12 @@ tr {
     background-color: #2d5286;
 }
 
-.callout.warning {
-    border: 2px solid #ffcb77;
-    background-color: #ffcb7720;
-    color: #86642d;
-}
-
 .callout.warning:before {
     -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z'/%3E%3C/svg%3E")
         no-repeat 50% 50%;
     mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' height='24px' viewBox='0 0 24 24' width='24px' fill='%23000000'%3E%3Cpath d='M0 0h24v24H0V0z' fill='none'/%3E%3Cpath d='M12 5.99L19.53 19H4.47L12 5.99M12 2L1 21h22L12 2zm1 14h-2v2h2v-2zm0-6h-2v4h2v-4z'/%3E%3C/svg%3E")
         no-repeat 50% 50%;
     background-color: #86642d;
-}
-
-.callout.success {
-    border: 2px solid #87c0b6;
-    background-color: #87c0b620;
-    color: #3e756a;
 }
 
 .callout.success:before {

@@ -1,0 +1,1253 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Workshop 4 - More JavaScript!</title>
+        <link rel="stylesheet" href="../utils/style.css" />
+        <link rel="stylesheet" href="../utils/lib/highlight.min.css" />
+    </head>
+    <body>
+        <header>
+            <section>
+                <h1>Workshop 4 - More JavaScript!</h1>
+                <blockquote>
+                    Goal: Use JavaScript to make elements on your page respond
+                    to clicks!
+                </blockquote>
+            </section>
+        </header>
+        <section>
+            <h2>Introduction</h2>
+            <p>
+                In this workshop we will continue our exploration of JavaScript,
+                and use it to make our store page more functional and
+                interesting by creating elements that respond to clicks.
+            </p>
+            <h3>Why should you care?</h3>
+            <p>
+                Modern websites are more than just static pages of information.
+                They are designed for all kinds of purposes, such as buying and
+                selling products, providing entertainment, connecting people via
+                social media, managing finances via online banking, etc. In
+                order to achieve these things, it's not enough for people
+                visiting a website to just be able to view it- they also need to
+                be able to interact with it in different ways.
+            </p>
+            <p>
+                One of the simplest ways to add functionality to your page is to
+                create elements that respond to <b>events</b> such as mouse
+                clicks. This will also make your website more engaging, so that
+                you can capture the interest of people who visit it.
+            </p>
+            <h3>Recap of Workshop 3</h3>
+            <p>We covered a lot in Workshop 3, including:</p>
+            <ul>
+                <li>Creating and using variables</li>
+                <li>Working with objects and arrays</li>
+                <li>
+                    Using a "for" loop to iterate through an array of products
+                </li>
+                <li>Creating a function to populate our product cards</li>
+            </ul>
+            <p>
+                Feel free to go back to
+                <a href="../Workshop3/index.html" target="blank">Workshop 3</a>
+                to help jog your memory, or ask a tutor for help!
+            </p>
+
+            <h3>Prerequisites</h3>
+            <ul>
+                <li>
+                    <a
+                        href="https://code.visualstudio.com/"
+                        title="You should already have this"
+                        >Visual Studio Code</a
+                    >
+                    installed and configured. If you attended previous
+                    workshops, this should already be done.
+                </li>
+                <li>The working files you last used for Workshop 3</li>
+            </ul>
+
+            <p class="callout info">
+                If you need help with the prerequisites, raise your hand - any
+                of the facilitators are happy to help!
+            </p>
+
+            <h3>Objectives</h3>
+            <p>By the end of this workshop, you will:</p>
+            <ul>
+                <li>Understand <b>onclick events</b></li>
+                <li>
+                    Create elements on your shop page that respond to onclick
+                    events
+                </li>
+                <li>
+                    Be able to use buttons, dialog boxes and alerts in your code
+                </li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Level 0 - Setup</h2>
+            <p>
+                If you were here for Workshop 3, simply launch Visual Studio
+                Code and open the folder containing your work from the last
+                Workshop!
+            </p>
+            <p>
+                If you weren't here for the previous workshops, then welcome!
+                &#129299; You can either start from the beginning (Workshop 1),
+                or you can download the starter code for this workshop and
+                continue from there.
+            </p>
+            <p class="callout info">
+                Click&nbsp;<a href="../Workshop3/Workshop3.zip">here</a>&nbsp;to
+                download the starter code if you're not up to date, or
+                click&nbsp;<a href="../">here</a>&nbsp;if you want to go back to
+                a previous workshop
+            </p>
+            <p>
+                You will also need to have Visual Studio Code (VS Code)
+                installed. If you don't, then we have instructions below on how
+                to setup your VS Code environment with the starter code for this
+                workshop below.
+            </p>
+            <details>
+                <summary>
+                    Click here to see how to set up Visual Studio Code
+                </summary>
+                <div class="content">
+                    <h3>Step 1 - Create your workspace</h3>
+                    <p>
+                        First, if you haven't already, click
+                        <a href="../Workshop3/Workshop3.zip">here</a> to
+                        download the files from the previous workshop. After
+                        they have finished downloading, unzip the files and copy
+                        them into a new folder. Make sure to give the new folder
+                        a meaningful name, such as My Website or whatever name
+                        you would like your project to have.
+                    </p>
+
+                    <p class="callout info">
+                        To find the zipped files after they are downloaded, open
+                        up your File Explorer/Finder and check the 'Downloads'
+                        folder. To unzip the entire folder, right click and then
+                        select extract all.
+                    </p>
+
+                    <h3>
+                        Step 2 - Set up your Project in Visual Studio Code (VS
+                        Code)
+                    </h3>
+                    <p>Open up VS Code. It should look like the image below:</p>
+                    <img
+                        src="./images/vs_code_1.PNG"
+                        alt="An empty VS Code window"
+                    />
+                    <p>
+                        Select <b>Open Folder</b> from the <b>File</b> menu in
+                        the top left, and then select the folder that you just
+                        made.
+                    </p>
+
+                    <h3>Step 3 - Setup your Internet Browser</h3>
+                    <p>
+                        You will need to open up <code>index.html</code> in your
+                        browser. To do this, find the
+                        <code>index.html</code> file in the File Explorer/Finder
+                        and double click on it. It should open in your default
+                        browser.
+                    </p>
+                    <p class="callout info">
+                        From inside VS Code, right click on
+                        <code>index.html</code> and select "Reveal in File
+                        Explorer/Finder" to quickly navigate to a file.
+                    </p>
+                    <p>You should now be ready to continue with Workshop 3.</p>
+                </div>
+            </details>
+
+            <p class="callout success">Great Job! &#129497;</p>
+        </section>
+
+        <section>
+            <h2>Level 1 - Add a pop-up for buying things</h2>
+            <p>
+                In this level we'll be making a pop-up of your shop item so you
+                can purchase the product. In the web development world this is
+                called a <b>dialog</b> since it starts a "conversation" with the
+                user.
+            </p>
+            <h3>Step 1: Create the bones of the dialog</h3>
+            <p>
+                <b>
+                    Let's start by heading over to your
+                    <code class="html">index.html</code> file.
+                </b>
+            </p>
+
+            <p>
+                After your closing <code>&lt/section&gt</code> tag of Top
+                Products, but before the closing <code>&lt/body&gt</code> tag,
+                add a <code>div</code> to contain the dialog. Next we'll add
+                another <code>div</code> inside that which will be the dialog
+                itself.
+            </p>
+
+            <pre class="html"><code title="index.html" language="html">
+
+    &lt;section&gt;
+        &lt;h2&gt;Top Products&lt;/h2&gt;
+        &lt;div id="topproductlist" class="itemlist"&gt;&lt;/div&gt;
+    &lt;/section&gt;
+
+    <mark class="highlight">&lt;div id="dialogbackground"&gt;</mark>
+        <mark class="highlight">&lt;div id="dialogcard"&gt;</mark>
+
+        <mark class="highlight">&lt;/div&gt;</mark>
+    <mark class="highlight">&lt;/div&gt;</mark>
+
+    &lt;/body&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/html&gt;
+        </code></pre>
+
+            <h3>Step 2: Add the contents to our dialog</h3>
+
+            <p>
+                Within both <code>div</code> elements we'll add one more
+                <code>div</code> to hold the content of our dialog.
+            </p>
+
+            <p>This <code>div</code> contains:</p>
+
+            <ul>
+                <li>
+                    an <code>h2</code>
+                    tag for the product title,
+                </li>
+                <li>
+                    a <code>p</code>
+                    tag for the product price,
+                </li>
+                <li>
+                    another <code>p</code>
+                    tag for the product description
+                </li>
+                <li>
+                    and a <code>button</code>
+                    so you can purchase the product.
+                </li>
+            </ul>
+
+            <div class="snippetresult">
+                <h3>Code</h3>
+                <pre class="html"><code title="index.html" language="html">
+    ...
+
+    &lt;div id="dialogbackground"&gt;
+        &lt;div id="dialogcard"&gt;
+
+            <mark class="highlight">&lt;div id="dialoginfo"&gt;</mark>
+                <mark class="highlight">&lt;h2 id="dialogtitle"&gt;title&lt;/h2&gt;</mark>
+                <mark class="highlight">&lt;p id="dialogprice"&gt;$0&lt;/p&gt;</mark>
+                <mark class="highlight">&lt;p id="dialogdescription"&gt;description&lt;/p&gt;</mark>
+                <mark class="highlight">&lt;button id="buybutton"&gt;Buy Now&lt;/button&gt;</mark>
+            <mark class="highlight">&lt;/div&gt;</mark>
+
+        &lt;/div&gt;
+    &lt;/div&gt;
+    ...
+                </code></pre>
+                <h3>Result</h3>
+                <img
+                    src="./images/L1_01.PNG"
+                    alt="unstyled dialog"
+                    style="width: 30%"
+                />
+            </div>
+
+            <p>
+                The text will be replaced with our product info later so put
+                whatever you want in the title, price and description tags.
+            </p>
+
+            <h3>Step 3: Add room for an image</h3>
+
+            <p>
+                Last, we'll add an <code>img</code> tag that will sit on the
+                right hand side of our product info.
+            </p>
+            <p>
+                We'll add a default image so we can see what we're doing but
+                feel free to use this one or find your own:
+            </p>
+            <img
+                src="./images/question-mark.jpg"
+                alt="man with question"
+                style="width: 200px"
+            />
+            <div class="snippetresult">
+                <h3>Code</h3>
+                <pre class="html"><code title="index.html" language="html">
+    ...
+
+    &lt;div id="dialogbackground" class="hidden"&gt;
+        &lt;div id="dialogcard"&gt;
+
+            &lt;div id="dialoginfo"&gt;
+                &lt;h2 id="dialogtitle"&gt;title&lt;/h2&gt;
+                &lt;p id="dialogprice"&gt;$0&lt;/p&gt;
+                &lt;p id="dialogdescription"&gt;description&lt;/p&gt;
+                &lt;button id="buybutton"&gt;Buy Now&lt;/button&gt;
+            &lt;/div&gt;
+            <mark class="highlight">&lt;img
+                id="dialogimage"
+                src="./images/question-mark.jpg"
+                alt="product image"
+            /&gt;</mark>
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    ...
+                </code></pre>
+                <h3>Result</h3>
+                <img
+                    src="./images/L1_02.PNG"
+                    alt="unstyled dialog with image"
+                    style="width: 85%"
+                />
+            </div>
+
+            <p class="callout warning">
+                Make sure you save your <code>index.html</code> file after
+                you've added the above.
+            </p>
+
+            <h3>Step 4: Add the styling</h3>
+
+            <p>
+                We have the contents of our dialog but it doesn't look very nice
+                does it? Let's
+                <b
+                    >jump into the
+                    <code class="css">style.css</code>
+                    to style it.
+                </b>
+            </p>
+
+            <p>
+                At the bottom of you file we'll add the styling for our
+                <code>#dialogcard</code>. This provides the base for our pop-up.
+                We'll set the height and width properties and the colour of the
+                background as well as some stylistic flare 🔥.
+            </p>
+            <p class="callout info">
+                Remember: since we're selecting by ID, we use a hash
+                <code>#</code> followed by the same ID we used in our HTML.
+            </p>
+
+            <p>
+                First let's add a background colour and some nice corners. Feel
+                free to go wild with the colour 🟩.
+            </p>
+
+            <pre class="css"><code title="style.css" language="css">
+#dialogcard {
+    background-color: #fafafa;
+
+    border-radius: 20px;
+    overflow: hidden;
+}
+            </code></pre>
+
+            <p>
+                We also need to say how the card should be laid out internally
+                and on the page. We can add width and height to stop it getting
+                too big and <code>flex</code> to position our image off to the
+                right.
+            </p>
+            <pre class="css"><code title="style.css" language="css">
+#dialogcard {
+    background-color: #fafafa;
+
+    border-radius: 20px;
+    overflow: hidden;
+
+    <mark class="highlight">
+    width: 80%;
+    height: 700px;
+
+    display: flex;
+    justify-content: space-between;
+    </mark>
+}
+            </code></pre>
+            <p>Your dialog should look something like this:</p>
+            <img
+                src="./images/L1_04.PNG"
+                alt="partly styled dialog"
+                style="width: 70%"
+            />
+
+            <p class="callout warning">
+                Make sure you save your <code>style.css</code> file and refresh
+                your browser so you can see the results above.
+            </p>
+
+            <p>
+                We'll now add the styling of the main content in our dialog card
+                (the <code>#dialoginfo</code> and <code>#dialogimage</code>).
+                See if you can figure out what each of the styles are doing.
+            </p>
+
+            <div class="snippetresult">
+                <h3>Code</h3>
+                <pre class="css"><code title="style.css" language="css">
+#dialoginfo {
+    padding: 10px 20px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 50%;
+}
+
+#dialogimage {
+    max-width: 50%;
+    height: 100%;
+    object-fit: cover;
+}
+                </code></pre>
+                <h3>Result</h3>
+                <img
+                    src="./images/L1_05.PNG"
+                    alt="partly styled dialog"
+                    style="width: 70%"
+                />
+            </div>
+
+            <details>
+                <summary>What is going on here?!</summary>
+                <div class="content">
+                    <ul>
+                        <li>
+                            <code>padding</code> adds some space around our
+                            content so it doesn't get too close to the edge of
+                            the dialog box.
+                        </li>
+                        <li>
+                            <code>display: flex;</code> let's us lay out our
+                            title, discription and price in a column which we
+                            can space out and control more finely.
+                        </li>
+                        <li>
+                            <code>width</code> and <code>height</code> can be a
+                            little fiddly but just makes sure everything is the
+                            right size.
+                        </li>
+                        <li>
+                            <code>object-fit: cover;</code> tells our image how
+                            to crop in order to fill the space its been given
+                            correctly.
+                        </li>
+                    </ul>
+                </div>
+            </details>
+
+            <p class="callout warning">
+                Can't see the above? Save your <code>style.css</code> file and
+                refresh your browser.
+            </p>
+
+            <p>
+                Now let's style that 'Buy Now' button. We'll style all buttons
+                to not have borders, be centered and to have a pointer cursor
+                when you go to click on it. Let's change the 'Buy Now' button to
+                be blue. (You can change the colour yourself using the
+                <code>background-color</code> property)
+            </p>
+
+            <div class="snippetresult">
+                <h3>Code</h3>
+                <pre class="css"><code title="style.css" language="css">
+button {
+    border: none;
+    text-align: center;
+    cursor: pointer;
+}
+
+#buybutton {
+    background-color: #86e2eb; /* Try change the
+             button colour here */
+    color: rgb(0, 0, 0); /* Try change the
+             text colour here */
+    font-size: 16px;
+    border-radius: 10px;
+    padding: 15px 32px;
+}
+
+#buybutton:hover {
+    background-color: #9cf7ff;
+}
+
+</code></pre>
+                <h3>Result</h3>
+                <img
+                    src="./images/L1_03.PNG"
+                    alt="button styling"
+                    style="width: 80%"
+                />
+            </div>
+
+            <p class="callout warning">
+                Keep saving your <code>style.css</code> file and refresh your
+                browser as you go.
+            </p>
+
+            <p>
+                Lastly, let's make the dialog have the effect of a 'pop-up' by
+                adding the <code>#dialogbackground</code> styling.
+            </p>
+
+            <p>
+                Since this is a pop-up, we want to position our elements
+                <b>up</b> above the other elements on our page. There are a few
+                ways to do this but using <code>position: fixed;</code> suits
+                our purposes in this case.
+            </p>
+            <p>
+                <code>top</code> and <code>left</code> tell our dialog
+                background to start from the top left of the page and have a
+                <code>width</code> and <code>height</code> of the full page.
+            </p>
+
+            <pre class="css"><code title="style.css" language="css">
+#dialogbackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+}
+            </code></pre>
+
+            <pre class="css"><code title="style.css" language="css">
+#dialogbackground {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    <mark class="highlight">
+    background-color: rgba(0, 0, 0, 0.431);  /* Try changing
+            this colour and see what happens */
+    display: flex;
+    justify-content: center;
+    align-items: center;</mark>
+}
+            </code></pre>
+
+            <details>
+                <summary>
+                    Your final pop-up should look a little like this:
+                </summary>
+                <div class="content">
+                    <img src="./images/L1_06.PNG" alt="final dialog" />
+                </div>
+            </details>
+
+            <p class="callout success">Great Job! Keep going for more fun 💰</p>
+        </section>
+
+        <section>
+            <h2>Level 2</h2>
+            <p>
+                Your dialog is hovering nicely above the page but we want to be
+                able to show and hide it when we click a product.
+            </p>
+            <!-- Add gif of showing hiding here -->
+            <p>
+                To do this we are going to use the
+                <code class="css">visibility: hidden;</code> css style.
+            </p>
+            <p>
+                Head to your <code class="css">style.css</code> and add a new
+                rule targetting our dialog:
+            </p>
+            <pre class="css">
+                <code title="style.css" language="css">
+#dialogbackground.hidden {
+    visibility: hidden;
+}
+                </code>
+            </pre>
+
+            <p>
+                Let's try hiding our dialog manually by adding the class
+                <code>hidden</code> to test our style:
+            </p>
+            <pre class="html">
+                <code title="index.html" language="html">
+        &lt;section&gt;
+            &lt;h2&gt;Top Products&lt;/h2&gt;
+            &lt;div id="topproductlist" class="itemlist"&gt;&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;div id="dialogbackground" class="<mark class="highlight">hidden</mark>"&gt;
+            &lt;div id="dialogcard"&gt;
+
+                &lt;div id="dialoginfo"&gt;
+                    &lt;h2 id="dialogtitle"&gt;&lt;/h2&gt;
+                    &lt;p id="dialogprice"&gt;&lt;/p&gt;
+                    &lt;p id="dialogdescription"&gt;&lt;/p&gt;
+                    &lt;button id="buybutton"&gt;Buy Now&lt;/button&gt;
+                &lt;/div&gt;
+
+                &lt;img id="dialogimage" alt=""/&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/body&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/html&gt;
+                </code>
+            </pre>
+            <p>
+                Now let's head to our <code class="js">script.js</code> file and
+                make a function we can call to open the dialog:
+            </p>
+
+            <pre class="js">
+                <code title="script.js" language="js">
+function openDialog() {
+    const dialog = document.getElementById("dialogbackground");
+    dialog.classList.remove("hidden");
+}
+                </code>
+            </pre>
+
+            <p>
+                This grabs our dialog element from the page and removes the
+                <code>hidden</code> class. When the dialog is no longer hidden,
+                it's visible. It's as simple as that.
+            </p>
+
+            <p>
+                To use the open function we need to add an onclick to the
+                product cards inside the <code>addProductCard</code> function so
+                we know what data to populate the dialog with when the card is
+                clicked.
+            </p>
+            <p>
+                FYI an <i>onclick event</i> generally occurs when a user clicks
+                on an element. It allows us to execute a JS function after a
+                click.
+            </p>
+            <p>
+                Put the highlighted code
+                <b>inside the <code>addProductCard</code> function.</b>
+            </p>
+
+            <pre class="js">
+                <code title="script.js > addProductCard()" language="js">
+// Add price
+const price = document.createElement("p");
+price.innerText = "$" + products[i].price;
+card.append(price);
+<mark class="highlight">
+card.onclick = function () {
+    openDialog();
+};</mark>
+
+// Add the cards
+parentElement.append(card);
+                </code>
+            </pre>
+
+            <p>Now try giving the card a click, the dialog should "pop up".</p>
+            <img
+                src="./images/opendialog.gif"
+                alt="dialog opens!"
+                style="width: 60%"
+            />
+            <p class="callout success">
+                You have some <code>hidden</code> talent!
+                <span id="hiddenEmoji">🔍</span>
+            </p>
+            <style>
+                #hiddenEmoji:hover::before {
+                    content: "🦠";
+                }
+
+                #hiddenEmoji:hover::after {
+                    content: "🦠";
+                }
+            </style>
+        </section>
+
+        <section>
+            <h2>Level 3 - The Tale of the Close Button</h2>
+
+            <p>
+                Now, our brand new dialog is great, but it'd be nice if we could
+                close it as well as open it, wouldn't it?
+            </p>
+
+            <p>
+                Let's embark on a quest to add a handy close button to our
+                dialog!
+            </p>
+
+            <h3>
+                Step 1 - Our hero,
+                <u style="text-decoration-color: #e68c70">HTML</u> &#129464;
+            </h3>
+
+            <p>
+                Hop into the html and add a new <code>&lt;button&gt;</code> to
+                the dialog. Go ahead and add the following line.
+            </p>
+
+            <pre class="html"><code title="index.html" language="html">
+        &lt;section&gt;
+            &lt;h2&gt;Top Products&lt;/h2&gt;
+            &lt;div id="topproductlist" class="itemlist"&gt;&lt;/div&gt;
+        &lt;/section&gt;
+
+        &lt;div id="dialogbackground" class="hidden"&gt;
+            &lt;div id="dialogcard"&gt;
+                <mark class="highlight">&lt;button id="closebutton"&gt;x&lt;/button&gt;</mark>
+                &lt;div id="dialoginfo"&gt;
+                    &lt;h2 id="dialogtitle"&gt;&lt;/h2&gt;
+                    &lt;p id="dialogprice"&gt;&lt;/p&gt;
+                    &lt;p id="dialogdescription"&gt;&lt;/p&gt;
+                    &lt;button id="buybutton"&gt;Buy Now&lt;/button&gt;
+                &lt;/div&gt;
+
+                &lt;img id="dialogimage" alt=""/&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+    &lt;/body&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/html&gt;
+
+</code></pre>
+
+            <p>
+                Let's have a peek at what it looks like so far. Save and
+                refresh, and open a dialog to take a look.
+            </p>
+
+            <img
+                src="./images/L3_01.png"
+                alt="The close button with no styling"
+                style="width: 30%"
+            />
+
+            <p>Hmm, looks like it needs some styling changes!</p>
+
+            <h3>
+                Step 2 of our quest, the
+                <u style="text-decoration-color: #70bbe6">CSS</u> &#127912;
+            </h3>
+
+            <p>
+                Now that we have a button with the ID
+                <code>closebutton</code>, let's jump into the css to style it.
+            </p>
+
+            <p>
+                Let's position the button in the top right of our dialog like
+                so.
+            </p>
+
+            <pre class="css"><code title="style.css" language="css">
+#closebutton {
+    <mark class="highlight">position: absolute;</mark>
+    <mark class="highlight">top: 10px;</mark>
+    <mark class="highlight">right: 10px;</mark>
+    <mark class="highlight">width: 40px;</mark>
+    <mark class="highlight">height: 40px;</mark>
+}
+
+</code></pre>
+
+            <div class="callout warning">
+                <p>
+                    Make sure the capitalisation of the IDs match in your HTML
+                    and CSS! Eg. <code>close<u>b</u>utton</code> and
+                    <code>close<u>B</u>utton</code> won't match.
+                </p>
+            </div>
+
+            <p>
+                Let's see what that looks like, save and refresh, open a dialog
+                and you should see your new button!
+            </p>
+
+            <img
+                src="./images/L3_02.png"
+                alt="The close button positioned to the top right"
+                style="width: 50%"
+            />
+
+            <p>
+                Looking good! Could be looking better though... Jump back to the
+                css and let's touch it up a bit more.
+            </p>
+
+            <pre class="css"><code title="style.css" language="css">
+#closebutton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    <mark class="highlight">background-color: #dbdbdb;</mark> /* A nicer background colour */
+    <mark class="highlight">border-radius: 100%;</mark> /* Make the button circular */
+    <mark class="highlight">color: #fafafa;</mark> /* Make the 'x' white */
+    <mark class="highlight">font-size: 20px;</mark> /* Make the 'x' a bit bigger */
+    <mark class="highlight">font-weight: 700;</mark> /* Make the 'x' more bold */
+}
+
+</code></pre>
+
+            <p>
+                While we're here, we can also add another selector to change the
+                colour of the button when it's hovered over with the mouse.
+            </p>
+
+            <p>
+                We do this using the <code>:hover</code>
+                <strong>pseudo-class</strong> - a fancy name for something we
+                add to the selector to specify a specific state, in this case
+                the state in which the mouse pointer is hovering over the
+                element.
+            </p>
+
+            <pre class="css"><code title="style.css" language="css">
+#closebutton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 40px;
+    height: 40px;
+    background-color: #dbdbdb;
+    border-radius: 100%;
+    color: #fafafa;
+    font-size: 20px;
+    font-weight: 700;
+}
+
+<mark class="highlight">#closebutton:hover {
+    background-color: #c0c0c0;
+}</mark>
+
+</code></pre>
+
+            <p>Save and refresh, and check out your new and improved button!</p>
+
+            <img
+                src="./images/L3_03.png"
+                alt="The close button fully styled"
+                style="width: 50%"
+            />
+
+            <p>If only it actually worked when you clicked it though...</p>
+
+            <h3>
+                Step 3 - Closing when clicked, sounds like a job for
+                <u style="text-decoration-color: #e6e470">JavaScript</u>
+                &#128220;
+            </h3>
+
+            <p>
+                It's time to go to our <code class="js">script.js</code> file
+                and add a new function at the bottom to close our dialog. This
+                function will do exactly the opposite of what our
+                <code>openDialog()</code> function did, and be creatively named
+                <code>closeDialog()</code>.
+            </p>
+
+            <pre class="js"><code title="script.js" language="js">
+function openDialog() {
+    let dialog = document.getElementById("dialogbackground")
+    dialog.classList.remove("hidden")
+}
+
+<mark class="highlight">function closeDialog() {
+    let dialog = document.getElementById("dialogbackground")
+    dialog.classList.add("hidden")
+}</mark>
+
+</code></pre>
+
+            <p>
+                Great, now we need this function to be called when our button is
+                clicked, so let's get the button and set its
+                <code>onclick</code>
+                attribute to our new function.
+            </p>
+
+            <pre class="js"><code title="script.js" language="js">
+function openDialog() {
+    let dialog = document.getElementById("dialogbackground")
+    dialog.classList.remove("hidden")
+}
+
+function closeDialog() {
+    let dialog = document.getElementById("dialogbackground")
+    dialog.classList.add("hidden")
+}
+<mark class="highlight">
+let closeButton = document.getElementById("closebutton")
+closeButton.onclick = closeDialog
+</mark>
+</code></pre>
+
+            <p>
+                Now, when you click the close button, it should close the
+                dialog. Try it out!
+            </p>
+
+            <p class="callout success">
+                Congrats! Your quest to make a close button has come to a close.
+                &#129395;
+            </p>
+        </section>
+
+        <section>
+            <h2>Level 4</h2>
+            <p>
+                We're able to get a box to show up when clicking on a product,
+                but we now we need to make sure the information for the product
+                that was clicked is being shown in that box.
+            </p>
+            <p>
+                To do this, we're making a new function in
+                <code>script.js</code> called <code>populateDialog()</code> that
+                takes an input of <code>product</code>.
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+function populateDialog(product) {
+
+}
+            </code></pre>
+            <p>
+                Now we're going to set up all our variables that make up our
+                product. That is the title, description, image, and price. We're
+                also adding in a 'buy' button for our dialog, so we need a
+                variable for that too.
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+function populateDialog(product) {
+    <mark class="highlight">const title = document.getElementById("dialogtitle");</mark>
+    <mark class="highlight">const description = document.getElementById("dialogdescription");</mark>
+    <mark class="highlight">const image = document.getElementById("dialogimage");</mark>
+    <mark class="highlight">const price = document.getElementById("dialogprice");</mark>
+    <mark class="highlight">const buyButton = document.getElementById("buybutton");</mark>
+}
+            </code></pre>
+            <p>
+                Each of those variables is referencing elements that we put into
+                our HTML earlier.
+            </p>
+            <p>
+                Next we'll add in some code to put text onto those elements. We
+                add in the title, the description, and the price using
+                <code>.innerText</code> on the elements, utilising the variables
+                we just created.
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+function populateDialog(product) {
+    let title = document.getElementById("dialogtitle");
+    let description = document.getElementById("dialogdescription");
+    let image = document.getElementById("dialogimage");
+    let price = document.getElementById("dialogprice");
+    let buyButton = document.getElementById("buybutton");
+
+    <mark class="highlight">title.innerText = product.title;</mark>
+    <mark class="highlight">description.innerText = product.description;</mark>
+    <mark class="highlight">price.innerText = "$" + product.price;</mark>
+}
+            </code></pre>
+            <p>
+                Using the <code>image</code> variable we created earlier, we'll
+                add in product image and alt text using <code>.src</code> and
+                <code>.alt</code> respectively
+            </p>
+            <pre class="js"><code title="script.js" language="JS">
+    ...
+    title.innerText = product.title;
+    description.innerText = product.description;
+    price.innerText = "$" + product.price;
+    <mark class="highlight">image.src = "images/" + product.image;</mark>
+    <mark class="highlight">image.alt = product.imageAlt;</mark>
+}
+            </code></pre>
+            <p>
+                Before we can move on, we need our new
+                <code>populateDialog()</code> function to be called at some
+                point, or the dialog will never actually get the information.
+                The best place for us to be calling this function is just
+                <b>before</b> we call the <code>openDialog()</code>, so that by
+                the time we open the dialog, we can be sure the information will
+                be there.
+            </p>
+            <p class="callout info">
+                Remember, only add the highlighted line, the rest should already
+                be in your code. This next section of code is located within
+                your addProductCard() function we filled out earlier.
+            </p>
+            <pre
+                class="js"
+            ><code title="script.js  > addProductCard()" language="JS">
+...
+card.onclick = function () {
+    <mark class="highlight">populateDialog(products[i]);</mark>
+    openDialog();
+};
+...
+            </code></pre>
+
+            <p>
+                Let's test it out! If you click on a product, the dialog will
+                open as usual, but should now display the product's information
+                in it like this:
+            </p>
+            <p>
+                <img
+                    src="./images/L4_01.png"
+                    alt="The dialog box correctly populated"
+                    style="width: 50%"
+                />
+            </p>
+            <details>
+                <summary>
+                    If your code isn't working, open this box to see what your
+                    <code>populateDialog()</code> function should look like.
+                </summary>
+                <div class="content">
+                    <h3>Code</h3>
+                    <pre
+                        style="user-select: none"
+                        class="js"
+                    ><code title="script.js" language="JS">
+function populateDialog(product) {
+    let title = document.getElementById("dialogtitle");
+    let description = document.getElementById("dialogdescription");
+    let image = document.getElementById("dialogimage");
+    let price = document.getElementById("dialogprice");
+    let buyButton = document.getElementById("buybutton");
+
+    title.innerText = product.title;
+    description.innerText = product.description;
+    price.innerText = "$" + product.price;
+    image.src = "images/" + product.image;
+    image.alt = product.imageAlt;
+}
+                    </code></pre>
+                </div>
+            </details>
+            <p class="callout success">
+                Nice one. Just one more level to go! &#127378;
+            </p>
+        </section>
+
+        <section>
+            <h2>Level 5 - Buy a product</h2>
+            <p>
+                In this level we'll be adding the functionality to buy a
+                product. (Don't worry you won't really be buying any products,
+                you'll just be pretending).
+            </p>
+
+            <h3>Step 1: Add the <code>buyThing()</code> function</h3>
+            <p>
+                At the bottom of your <code class="js">script.js</code> file,
+                add the function below:
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+...
+
+document.getElementById("closebutton").onclick = closeDialog;
+
+
+<mark class="highlight">function buyThing(product) {</mark>
+    <mark class="highlight">return function () {</mark>
+    <mark class="highlight">alert("You bought " + product.title + "!");</mark>
+    <mark class="highlight">};</mark>
+<mark class="highlight">}</mark>
+
+    </code></pre>
+            <p>
+                This function is a little tricky, but essentially it just
+                returns another function that creates an alert in your browser
+                with the product title of the product you clicked on.
+            </p>
+
+            <h3>Step 2: Add the <code>.onclick</code> event</h3>
+            <p>
+                First head back to your
+                <code>populateDialog(product)</code> function. We'll add one
+                more line to this function that will add our
+                <code>.onclick</code> event to the 'Buy Now' button in our
+                dialog.
+            </p>
+
+            <pre class="js"><code title="script.js" language="JS">
+
+function populateDialog(product) {
+    const title = document.getElementById("dialogtitle");
+    const description = document.getElementById("dialogdescription");
+    const image = document.getElementById("dialogimage");
+    const price = document.getElementById("dialogprice");
+    const buyButton = document.getElementById("buybutton");
+
+    title.innerText = product.title;
+    description.innerText = product.description;
+    image.src = "images\\" + product.image;
+    image.alt = product.imageAlt;
+    price.innerText = "$" + product.price;
+    <mark class="highlight">buyButton.onclick = buyThing(product);</mark>
+}
+
+            </code></pre>
+            <p>
+                The <code>.onClick</code> event fires the function
+                <code>buyThing()</code> when the button is clicked.
+            </p>
+
+            <p class="callout warning">
+                Save your <code>script.js</code> file, refresh your browser and
+                try it out!
+            </p>
+
+            <p>
+                In a real eCommerce site this function might add this product to
+                your shopping cart but for ours we'll just pretend 😊.
+            </p>
+
+            <p class="callout success">
+                Success! You've completed Workshop 4 🎉
+            </p>
+            <hr />
+        </section>
+
+        <section>
+            <h1>Extensions</h1>
+            <h2>Shopping Cart</h2>
+            <p>
+                So you've finished the main content? Now you've reached the good
+                stuff. For an extension activity we'll be making an interactive
+                cart for your website.
+            </p>
+            <img src="images/cart.gif" alt="working cart" />
+            <p>
+                First let's add an icon for our cart. We're going to be using an
+                SVG which is a format for representing illustrations at any
+                size.
+            </p>
+            <div class="snippetresult">
+                <h3>Code</h3>
+                <pre class="html"><code title="index.html" language="HTML">
+&lt;nav&gt;
+    &lt;h1&gt;ShopInc&lt;/h1&gt;
+<mark class="highlight">    &lt;div id="cart-container"&gt;
+        &lt;svg viewBox="0 0 24 24"&gt;
+            &lt;path fill="#fff" d="M17,18A2,2 0 0,1 19,20A2,2 0 0,1 17,22C15.89,22 15,21.1 15,20C15,18.89 15.89,18 17,18M1,2H4.27L5.21,4H20A1,1 0 0,1 21,5C21,5.17 20.95,5.34 20.88,5.5L17.3,11.97C16.96,12.58 16.3,13 15.55,13H8.1L7.2,14.63L7.17,14.75A0.25,0.25 0 0,0 7.42,15H19V17H7C5.89,17 5,16.1 5,15C5,14.65 5.09,14.32 5.24,14.04L6.6,11.59L3,4H1V2M7,18A2,2 0 0,1 9,20A2,2 0 0,1 7,22C5.89,22 5,21.1 5,20C5,18.89 5.89,18 7,18M16,11L18.78,6H6.14L8.5,11H16Z" /&gt;
+        &lt;/svg&gt;
+    &lt;/div&gt;</mark>
+&lt;/nav&gt;
+                </code></pre>
+                <h3>Result</h3>
+                <img src="images/EX_01.PNG" alt="big cart" />
+            </div>
+            <p>
+                We want to position our cart in the nav bar. To do this we can
+                make the <code>nav</code> element a flexbox:
+            </p>
+            <pre class="css"><code title="style.css" language="CSS">
+nav {
+<mark class="highlight">    display: flex;
+    justify-content: space-between;
+    align-items: center;</mark>
+    background-color: #666;
+    padding: 20px;
+}
+            </code></pre>
+            <p>Add a new style rule to make the cart a reasonable size.</p>
+            <pre class="css"><code title="style.css" language="CSS">
+#cart-container svg {
+    width: 32px;
+    height: 32px;
+}
+            </code></pre>
+            <p>
+                Next we'll add a number to increment and display it next to the
+                cart. Add some <code class="html">html</code> and
+                <code class="css">css</code> and make it happen!
+            </p>
+            <pre class="html"><code title="index.html" language="HTML">
+    &lt;/svg&gt;
+<mark class="highlight">    &lt;span id="cart-number"&gt;0&lt;/span&gt;</mark>
+&lt;/div>
+            </code></pre>
+            <pre class="css"><code title="style.css" language="CSS">
+#cart-container {
+    display: flex;
+    align-items: center;
+}
+
+#cart-number {
+    color: #fff;
+    font-size: 24px;
+    font-weight: 700;
+    margin-right: 6px;
+}
+            </code></pre>
+            <img src="images/EX_02.PNG" alt="cart with number" />
+            <p>
+                All we need to do now is increment the number whenever we buy
+                something.
+            </p>
+            <div class="snippetresult">
+                <h3>Before</h3>
+                <pre class="js"><code title="script.js" language="JS">
+function buyThing(product) {
+    return function () {
+        alert("You bought " + product.title + "!");
+    };
+}
+                </code></pre>
+                <h3>After</h3>
+                <pre class="js"><code title="script.js" language="JS">
+function buyThing(product) {
+    return function () {
+<mark class="highlight">    const cart = document.getElementById("cart-number");
+    cart.innerText = parseInt(cart.innerText);</mark>
+    };
+}
+                </code></pre>
+            </div>
+            <p>
+                Since our value is stored as a string in the webpage, we need to
+                use <code>parseInt</code> to be able to add to it properly.
+            </p>
+            <p>
+                Try clicking one of your product's buy buttons and see the cart
+                go up in value.
+            </p>
+            <img src="images/cart.gif" alt="working cart" />
+            <p class="callout success">
+                You have successfully completed the workshop and there is no
+                more work for you to do 😏
+            </p>
+        </section>
+    </body>
+    <script src="../utils/lib/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</html>
