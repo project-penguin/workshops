@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Penguin API</title>
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+        }
+
+        .container {
+            height: 100%;
+            display: flex;
+            justify-content: center;
+        }
+
+        .endpoints {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 50px;
+        }
+
+        .endpoint {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .endpoint > span {
+            padding: 10px;
+            color: #fff;
+            border-radius: 8px;
+        }
+
+        .endpoint.get > span {
+            background-color: #ad89df;
+        }
+
+        .endpoint.post > span {
+            background-color: #90d17e;
+        }
+
+        .endpoint > pre {
+            padding: 10px;
+            border-radius: 8px;
+            background-color: #eee;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="endpoints">
+            <div class="endpoint get"><span>GET</span><pre>http://workshop5api.vercel.app/api/products/:id</pre></div>
+            <div class="endpoint post"><span>POST</span><pre>https://workshop5api.vercel.app/api/products</pre></div>
+        </div>
+    </div>
+</body>
+</html>
