@@ -1,0 +1,9 @@
+{
+  "name": "workshop5-api",
+  "description": "",
+  "author": "codepenguin0s@gmail.com",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongodb": "^4.8.1"
+  }
+}
