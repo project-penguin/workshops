@@ -1,4 +1,9 @@
 import { getProducts, getAllProducts } from "../../controller/products"
+import { checkAuth } from "../../util/auth"
+import { checkId } from "../../util/validation"
+import { ipRateLimit } from "../../util/rate-limit/ip-rate-limit"
+
+let test = 0
 
 export default async function handler(req, res) {
     try {
@@ -11,8 +16,16 @@ export default async function handler(req, res) {
 
 const handlers = {
     async GET(req, res) {
-        if (!req.query.id) throw new Error('No query params found')
-        const results = await getProducts(req.query.id)
+        if (!checkAuth(req)) throw new Error('Failed to authenticate')
+        await ipRateLimit(req, res)
+        if (res.statusCode !== 200) return res
+        const id = req.query.id
+        if (!id) throw new Error('No query params found')
+        if(!checkId(id)) throw new Error(`Invalid id provided: ${id}`)
+        const results = await getProducts(id)
+        if (results === null) return res.status(404).json({
+            message: `Products with id ${id} could not be found`
+        })
         res.status(200).json({
             message: "Successfully retrieved products",
             data: results

@@ -1,5 +1,6 @@
 import { checkAuth } from "../../util/auth"
 import { createProducts } from "../../controller/products"
+import { ipRateLimit } from "../../util/rate-limit/ip-rate-limit"
 
 export default async function handler(req, res) {
     try {
@@ -15,9 +16,10 @@ const handlers = {
     },
     async POST(req, res) {
         if (!checkAuth(req)) throw new Error('Failed to authenticate')
+        await ipRateLimit(req, res)
+        if (res.statusCode !== 200) return res
         if (!req.body || !req.body.products) throw new Error('bad body')
         const id = await createProducts(req.body.products)
-        console.log(id)
         return res.status(200).json({ id, message: "Successfully added products" })
     }
 }

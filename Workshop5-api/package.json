@@ -3,7 +3,9 @@
   "description": "",
   "author": "codepenguin0s@gmail.com",
   "dependencies": {
+    "axios": "^0.27.2",
     "dotenv": "^16.0.1",
+    "formidable": "^2.0.1",
     "mongodb": "^4.8.1"
   }
 }
