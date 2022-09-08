@@ -14,7 +14,6 @@ export default async function handler(req, res) {
 
 const handlers = {
     async GET(req, res) {
-        if (!checkAuth(req)) throw new Error('Failed to authenticate')
         await ipRateLimit(req, res)
         if (res.statusCode !== 200) return res
         const id = req.query.id
