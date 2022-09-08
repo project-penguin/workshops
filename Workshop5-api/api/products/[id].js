@@ -3,8 +3,6 @@ import { checkAuth } from "../../util/auth"
 import { checkId } from "../../util/validation"
 import { ipRateLimit } from "../../util/rate-limit/ip-rate-limit"
 
-let test = 0
-
 export default async function handler(req, res) {
     try {
         if (handlers[req.method] === undefined) return res.status(404).json({ message: "Method not available" })
