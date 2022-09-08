@@ -18,7 +18,7 @@ const handlers = {
         if (!checkAuth(req)) throw new Error('Failed to authenticate')
         await ipRateLimit(req, res)
         if (res.statusCode !== 200) return res
-        if (!req.body || !req.body.products) throw new Error('bad body')
+        if (!req.body || !req.body.products) throw new Error('Could not read products')
         const id = await createProducts(req.body.products)
         return res.status(200).json({ id, message: "Successfully added products" })
     }
