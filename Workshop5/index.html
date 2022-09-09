@@ -1,0 +1,836 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Workshop 5 - APIs</title>
+        <link rel="stylesheet" href="../utils/style.css" />
+        <link rel="stylesheet" href="../utils/lib/highlight.min.css" />
+    </head>
+    <body>
+        <header>
+            <section>
+                <h1>Workshop 5 - APIs</h1>
+                <blockquote>Goal: Working with<code>APIs</code>!</blockquote>
+            </section>
+        </header>
+        <section>
+            <h2>Introduction to Workshop 5</h2>
+            <p>
+                Today we'll be sharing our store products with our friends and
+                displaying their products on our sites.
+            </p>
+            <p>
+                You already know the basics of JavaScript, HTML and CSS, so
+                today we'll be showing you how to use these languages to send
+                and receive information from an API (Application Programming
+                Interface) which will populate a products list in our store.
+            </p>
+            <p>
+                There's also a ton of other free APIs available on the web that
+                you can use to make your website even cooler!
+            </p>
+
+            <h2>What is an API and what cool things can I do with them?</h2>
+            <p>
+                <strong>API</strong> is the acronym for
+                <strong>A</strong>pplication <strong>P</strong>rogramming
+                <strong>I</strong>nterface, which is a piece of software that
+                allows two applications to talk to each other. APIs are
+                everywhere even though you might never see them. Every app and
+                website you've used most likely communicates with APIs to do
+                things like send instant messages, transfer money online or
+                check the weather.
+            </p>
+            <h3>How does an API work?</h3>
+            <p>
+                The way an API works is similar to a restaurant. When you sit
+                down to eat at a restaurant, you’re given a menu. You select an
+                item from the menu and give the waiter your order so they can
+                get it from the kitchen. You don't know what happens in the
+                kitchen, but after a while the waiter delivers your food to the
+                table.
+            </p>
+            <p>
+                In this example, you are the
+                <strong><em>Client</em></strong> acting as your website; your
+                order is a <strong><em>request</em> </strong>made to the API in
+                a language you both understand; the waiter is the
+                <em><strong>API</strong></em
+                >; the kitchen is the application or
+                <strong><em>server</em> </strong> you are communicating with;
+                and the menu is the API <strong><em>documentation</em></strong
+                >. You are not allowed to enter the kitchen, and the waiter can
+                only deliver what the kitchen provides.
+            </p>
+            <img
+                src="images/API_RESTaurant.png"
+                alt="Client communicates to the api which communicates to the server."
+            />
+            <p>
+                The type of order you can give your waiter can also vary, for
+                instance you might order drinks, entrée, mains or dessert. But
+                it's important to make sure that no matter what you order
+                through your waiter, it's in a language you both understand.
+            </p>
+            <h3>How do we communicate with an API?</h3>
+            <p>
+                When making an API call over the web, that language is
+                <strong>HTTP</strong> or <strong>H</strong>ypertext
+                <strong>T</strong>ransfer <strong>P</strong>rotocol, which was
+                designed for communication between web browsers and web servers.
+                There are a number of HTTP methods which describe the type of
+                request, or what you want the API to do. The most commonly used
+                ones are:
+            </p>
+            <p>
+                <code>GET</code> - I am requesting a piece of information from
+                you.
+            </p>
+            <p>
+                <code>POST</code> - I am requesting that you create this new
+                piece of information.
+            </p>
+            <p>
+                <code>PUT</code> - I am requesting that you update a piece of
+                information that you have.
+            </p>
+            <p>
+                <code>PATCH</code> - I am requesting that you update part of a
+                piece of information that you have.
+            </p>
+            <p>
+                <code>DELETE</code> - I am requesting that you delete a piece of
+                information that you have.
+            </p>
+            <p>
+                In this workshop, we'll be using the two most common requests:
+                <code>GET</code> and <code>POST</code>.
+            </p>
+
+            <h2>Recap of Workshop 4</h2>
+            <ul>
+                <li>
+                    <p>
+                        We continued our exploration of JavaScript, and used it
+                        to make our store page more functional and interesting
+                        by creating elements that responded to clicks.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        We created the functionality and styled a dialog
+                        (pop-up) so you could pretend to buy one of the products
+                        in your store.
+                    </p>
+                </li>
+            </ul>
+
+            <p>
+                Feel free to go back to
+                <a href="../Workshop4/index.html" target="blank">Workshop 4</a>
+                to help jog your memory, or ask a tutor for help!
+            </p>
+
+            <h2>By the end of this workshop, you will be able to:</h2>
+            <ul>
+                <li>
+                    <p>Define HTTP, Host, Client, Server, and API</p>
+                </li>
+                <li>
+                    <p>Send POST and GET requests to an API</p>
+                </li>
+                <li>
+                    <p>
+                        Make your products available for your friends to 'sell'
+                        in their stores
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        Retrieve your friends' products and display them in your
+                        store
+                    </p>
+                </li>
+            </ul>
+
+            <p class="callout success">
+                So here we are... upcoming are some secrets on how to become a
+                pro web-developer! Enjoy this session and remember to ask our
+                wonderful tutors any questions along the way. Have fun!
+            </p>
+        </section>
+
+        <section>
+            <h2>Level 0 - Setup</h2>
+            <p>
+                If you were here for Workshop 4, simply launch Visual Studio
+                Code and open the folder containing your work from the last
+                Workshop!
+            </p>
+            <p>
+                If you weren't here for the previous workshops, then welcome!
+                &#129299; You can either start from the beginning (Workshop 1),
+                or you can download the starter code for this workshop and
+                continue from there.
+            </p>
+            <p class="callout info">
+                Click&nbsp;<a href="../Workshop4/Workshop4.zip">here</a>&nbsp;to
+                download the starter code. Or click&nbsp;<a href="../">here</a
+                >&nbsp;if you want to go back to a previous workshop
+            </p>
+            <p>
+                You will also need to have Visual Studio Code (VS Code)
+                installed. If you don't, then we have instructions below on how
+                to setup your VS Code environment with the starter code for this
+                workshop below.
+            </p>
+            <details>
+                <summary>
+                    Click here to see how to set up Visual Studio Code
+                </summary>
+                <div class="content">
+                    <h3>Step 1 - Create your workspace</h3>
+                    <p>
+                        First, if you haven't already, click
+                        <a href="../Workshop4/Workshop4.zip">here</a> to
+                        download the files from the previous workshop. After
+                        they have finished downloading, unzip the files and copy
+                        them into a new folder. Make sure to give the new folder
+                        a meaningful name, such as My Website or whatever name
+                        you would like your project to have.
+                    </p>
+
+                    <p class="callout info">
+                        To find the zipped files after they are downloaded, open
+                        up your File Explorer/Finder and check the 'Downloads'
+                        folder. To unzip the entire folder, right click and then
+                        select extract all.
+                    </p>
+
+                    <h3>
+                        Step 2 - Set up your Project in Visual Studio Code (VS
+                        Code)
+                    </h3>
+                    <p>Open up VS Code. It should look like the image below:</p>
+                    <img
+                        src="./images/vs_code_1.PNG"
+                        alt="An empty VS Code window"
+                    />
+                    <p>
+                        Select <b>Open Folder</b> from the <b>File</b> menu in
+                        the top left, and then select the folder that you just
+                        made.
+                    </p>
+
+                    <h3>Step 3 - Setup your Internet Browser</h3>
+                    <p>
+                        You will need to open up <code>index.html</code> in your
+                        browser. To do this, find the
+                        <code>index.html</code> file in the File Explorer/Finder
+                        and double click on it. It should open in your default
+                        browser.
+                    </p>
+                    <p class="callout info">
+                        From inside VS Code, right click on
+                        <code>index.html</code> and select "Reveal in File
+                        Explorer/Finder" to quickly navigate to a file.
+                    </p>
+                    <p>You should now be ready to continue with Workshop 5.</p>
+                </div>
+            </details>
+
+            <p class="callout success">Great Job! &#129497;</p>
+        </section>
+        <section>
+            <style>
+                .playground {
+                    border: 2px solid #5da0fd;
+                    padding: 0 25px;
+                    border-radius: 15px;
+                }
+
+                .requestInput {
+                    display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    width: 100%;
+                    gap: 10px;
+                }
+
+                .requestInput > .get {
+                    background-color: #ad89df;
+                    padding: 10px;
+                    color: #fff;
+                    border-radius: 8px;
+                    user-select: none;
+                    font-weight: 600;
+                }
+
+                .requestInput > input {
+                    flex: 1 0 auto;
+                    padding: 10px;
+                    border-radius: 8px;
+                    border: 2px solid #5ea0fd;
+                    font-family: monospace;
+                    white-space: pre;
+                }
+
+                .requestInput > button {
+                    background-color: #5ea0fd;
+                    border: none;
+                    padding: 12px;
+                    color: #fff;
+                    border-radius: 8px;
+                }
+
+                .requestInput > button:hover {
+                    background-color: #71acff;
+                    cursor: pointer;
+                }
+            </style>
+            <h2>Level 1 - Hands on with APIs</h2>
+
+            <p>
+                Now, before we jump straight into using APIs in our code, let's
+                try them out ourselves first!
+            </p>
+
+            <p>
+                Below are some APIs that return json data when you send a
+                <code>GET</code> request. Familiarise yourself by trying them
+                out in the API Playground!
+            </p>
+
+            <ul>
+                <li>
+                    Get the current location of the ISS:
+                    <code>https://api.wheretheiss.at/v1/satellites/25544</code>
+                </li>
+                <li>
+                    Search the Star Wars API for info on Chewbacca:
+                    <code>https://swapi.dev/api/people/13</code>
+                </li>
+                <li>
+                    The current weather in Zurich, Switzerland:
+                    <code>https://goweather.herokuapp.com/weather/Zurich</code>
+                </li>
+            </ul>
+            <div class="playground">
+                <h3 style="margin-bottom: 20px">API Playground 🎡</h3>
+                <div class="requestInput">
+                    <span class="get">GET</span>
+                    <input
+                        type="text"
+                        id="apiUrl"
+                        onsubmit="request()"
+                        value="https://api.wheretheiss.at/v1/satellites/25544"
+                    />
+                    <button onclick="request()">Send</button>
+                </div>
+
+                <div id="callout" class="callout info">
+                    <p id="status">
+                        Hit the send button to send a GET request!
+                    </p>
+                </div>
+                <pre class="full"><code id="response" class="json"></code></pre>
+                <script>
+                    const codeBlock = document.getElementById("response");
+                    const callout = document.getElementById("callout");
+                    const statusP = document.getElementById("status");
+                    const urlInput = document.getElementById("apiUrl");
+
+                    urlInput.addEventListener("keypress", function (event) {
+                        if (event.key === "Enter") {
+                            event.preventDefault();
+                            request();
+                        }
+                    });
+
+                    function request() {
+                        codeBlock.innerText = "";
+                        statusP.innerText = "Loading";
+                        callout.classList = "callout info";
+
+                        fetch(urlInput.value)
+                            .then(function (res) {
+                                statusP.innerText = "Status " + res.status;
+                                callout.classList =
+                                    "callout " +
+                                    (res.ok ? "success" : "warning");
+                                return res.text();
+                            })
+                            .then(function (text) {
+                                try {
+                                    const data = JSON.parse(text);
+                                    const json = JSON.stringify(
+                                        data,
+                                        null,
+                                        "    "
+                                    );
+                                    codeBlock.innerText = "\n" + json + "\n\n";
+                                } catch (err) {
+                                    if (
+                                        err.message.includes(
+                                            "is not valid JSON"
+                                        )
+                                    ) {
+                                        throw Error(
+                                            "Response is not readable (not JSON)"
+                                        );
+                                    }
+                                    throw Error();
+                                }
+                                hljs.highlightAll();
+                            })
+                            .catch(function (err) {
+                                callout.classList = "callout warning";
+                                if (err.message) {
+                                    statusP.innerText = err.message;
+                                } else {
+                                    codeBlock.innerText = "";
+                                }
+                            });
+                    }
+                </script>
+            </div>
+            <p class="callout success">
+                Tried out all the APIs? Time to use an API in our code!
+                &#128268;
+            </p>
+        </section>
+        <section>
+            <h2>Level 2 - Setting Up Your Affiliate Section</h2>
+            <p>
+                What we're going to do is use the power of an API to upload our
+                'top products' list for others to use, and be able to download
+                one someone else made and display it in our store. But to make
+                that work, we need to first do some housekeeping.
+            </p>
+            <h3>Step 1: Important Code Changes</h3>
+            <p>
+                When we first setup our top products list in
+                <code>script.js</code>, we wrote our products list and
+                <code>addProductCard()</code> function in a way that wasn't very
+                reusable. With just a couple changes, we can make it so that the
+                <code>addProductCard()</code> can be reused for our new product
+                list given by the API.
+            </p>
+
+            <p class="callout warning">
+                Warning: your code will not work down the line if you don't make
+                these changes.
+            </p>
+
+            <p>
+                First, we change all the 'image' variables in our products list
+                to
+                <b>include</b><code>images/</code
+                ><b> before the image file name</b>.
+            </p>
+            <p>
+                Below is an example using one of the default values from
+                previous workshops, your products may be very different, but
+                what you need to add will be the same.
+            </p>
+            <div class="snippetresult">
+                <h3>Before</h3>
+                <pre class="js"><code title="script.js" language="js">
+{
+    title: "Cake",
+    description: "Tasty cake",
+    image: "cake.png",
+    imageAlt: "A blue monster cake",
+    price: 10,
+},
+                </code></pre>
+                <h3>After</h3>
+                <pre class="js"><code title="script.js" language="js">
+{
+    title: "Cake",
+    description: "Tasty cake",
+    image: "<mark style = "background-color: #87c0b670" >images/</mark>cake.png",
+    imageAlt: "A blue monster cake",
+    price: 10
+},
+                </code></pre>
+            </div>
+            <p>You need to do this for <b>every product in your list</b>.</p>
+            <p>
+                The second little change we need is to remove the addition of
+                <code>images/</code> we did within the
+                <code>addProductCard()</code> function like so:
+            </p>
+            <div class="snippetresult">
+                <h3>Before</h3>
+                <pre class="js"><code title="script.js" language="js">
+function addProductCard(parentElement, products) {
+    for (let i = 0; i < products.length; i++) {
+        console.log(products[i].title);
+        const card = document.createElement("div");
+        card.setAttribute("class", "itemcard");
+
+        const image = document.createElement("img");
+        image.setAttribute("src", <mark style = "background-color: #ff4d4d70" >"images/" +</mark> products[i].image);
+        image.setAttribute("alt", products[i].imageAlt);
+        card.append(image);
+                </code></pre>
+                <h3>After</h3>
+                <pre class="js"><code title="script.js" language="js">
+function addProductCard(parentElement, products) {
+    for (let i = 0; i < products.length; i++) {
+        console.log(products[i].title);
+        const card = document.createElement("div");
+        card.setAttribute("class", "itemcard");
+
+        const image = document.createElement("img");
+        image.setAttribute("src", products[i].image);
+        image.setAttribute("alt", products[i].imageAlt);
+        card.append(image);
+                </code></pre>
+            </div>
+            <p>
+                That's it. <code>addProductCard()</code> is now able to be
+                reused for our upcoming API functionality!
+            </p>
+            <h3>Step 2: Additional HTML</h3>
+            <p>
+                As the title of this step might suggest, we'll be working on our
+                HTML file for this bit (<code>index.html</code>).
+            </p>
+            <p>
+                Much like we did when making room for our top products list, we
+                need to have a <code>&lt;section&gt;</code> for our API products
+                list to be in. You can put it just below your Top Products like
+                this:
+            </p>
+            <pre class="html"><code title="index.html" language="html">
+...
+&lt;section&gt;
+    &lt;h2&gt;Top Products&lt;/h2&gt;
+    &lt;div id="topproductlist" class="itemlist"&gt;&lt;/div&gt;
+&lt;/section&gt;
+
+<mark class = "highlight">&lt;section&gt;
+    &lt;h2&gt;Other Products&lt;/h2&gt;
+    &lt;div id="otherproductlist" class="itemlist"&gt;&lt;/div&gt;
+&lt;/section&gt;</mark>
+...
+            </code></pre>
+            <h3>Step 3: Back to JavaScript</h3>
+            <p>
+                In your <code>script.js</code> file, add these two lines to your
+                code.
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+...
+<mark class = "highlight">const otherProductsListElement = document.getElementById("otherproductlist");</mark>
+
+<mark class = "highlight">const API_URL = "https://workshop5api.vercel.app/api/products/";</mark>
+<mark class = "highlight">const PRODUCT_ID = "631712785011ab51ce90c614";</mark>
+            </code></pre>
+            <p>
+                The first line adds the 'otherproductlist' you made in the HTML
+                as a variable we can reference in our JavaScript.
+            </p>
+            <p>
+                The second line about <code>API_URL</code> is the URL to the API
+                we will be using for both our GET and POST requests.
+            </p>
+
+            <p>
+                In our third line of code, we have the <code>PRODUCT_ID</code>,
+                which we will be using in our GET request to get the default
+                product list. More on this later.
+            </p>
+            <p class="callout warning">
+                Don't forget to save your HTML/JS files and refresh your browser
+                each time you edit your code for changes to take effect
+            </p>
+            <p class="callout success">
+                Nicely done. Now let's get to the fun part! &#9193;
+            </p>
+        </section>
+        <section>
+            <h2>Level 3 - Our GET Request</h2>
+            <p>
+                Now that you have the two variables we'll be working with, we
+                can move onto some new functions. First, we'll make a function
+                that sends a GET request to our API. GET requests tell an API to
+                give us information. In our case, we'll be requesting a list of
+                products to fill in our new
+                <code>otherProductList</code> section.
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function getAPIProducts(id) {
+
+}
+            </code></pre>
+            <p>
+                You may have noticed that this function is defined as
+                <code>async</code>. This is short for <b>Asynchronous</b>. You
+                don't need to fully understand this, but async functions have
+                one or many <code>await</code> statements in them. Essentially
+                <code>await</code> makes our code wait for a result before
+                moving on. The result in our case is an answer from our API. Our
+                function also takes 'id' as input. This ID will tell our API
+                what list of products you want to actually get.
+            </p>
+            <p>
+                Inside this new <code>getAPIProducts()</code>function we'll have
+                a line for using <code>fetch()</code> to perform our GET
+                request, a line for assigning the resulting JSON response to a
+                variable we'll call 'data', and a final line to return this data
+                when the function is used.
+            </p>
+            <p>
+                The <code>fetch()</code> request contains a 'method' which
+                states this request will be a GET request. The 'body' is the
+                data we will be sending the API, which in this case is the ID of
+                the products list we want.
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function getAPIProducts(id) {
+    <mark class="highlight">const response = await fetch(API_URL, {</mark>
+        <mark class="highlight">method: "GET",</mark>
+        <mark class="highlight">body: id</mark>
+    <mark class="highlight">});</mark>
+    <mark class="highlight">const data = await response.json();</mark>
+    <mark class="highlight">return data;</mark>
+}
+            </code></pre>
+            <p>
+                Having a function that gets our new list of products from the
+                API is one thing, but we still need to properly process and add
+                this data into our website. The code for this will be stored in
+                another new async function that we'll call
+                <code>setProducts()</code>
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function setProducts() {
+
+}
+            </code></pre>
+            <p>
+                Inside this new function we'll add a few lines of code. The
+                first line calls <code>getAPIProducts()</code> which we made
+                earlier, and gives it the ID that will return the default list
+                of products to test that this works.
+            </p>
+            <p></p>
+            <p>
+                The second line of code in this function calls our
+                <code>addProductCard()</code> function we edited earlier to get
+                it to add our list of products into the page in the right spot
+                (otherProductListElement).
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function setProducts() {
+    <mark class="highlight">const response = await getAPIProducts("PRODUCT_ID");</mark>
+    <mark class="highlight">addProductCard(otherProductsListElement, response.data.products);</mark>
+}
+            </code></pre>
+            <p>
+                In order for us to see our new products list populated
+                automatically, we need to send our GET request when we first
+                load the website. To do this, we simply add a call to our
+                <code>setProducts()</code> function within our JavaScript file
+                by adding <b>this one line</b> in underneath our function:
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+    ...
+    addProductCard(otherProductsListElement, products);
+}
+
+<mark class="highlight">setProducts()</mark>
+            </code></pre>
+            <p>
+                That's all for the GET request. These functions should now be
+                running automatically when loading your page, so to test that
+                this works, all you need to do is save your JavaScript and HTML
+                files and reload your browser tab. If it all went well, you
+                should see the default products we've stored in the API and it
+                should look like this:
+            </p>
+            <p>INSERT IMAGE OF THE DEFAULT GET REQUEST RESULTS HERE</p>
+            <p class="callout success">
+                Your GET request is complete! Now its time for POST &#128238;
+            </p>
+        </section>
+        <section>
+            <h2>Level 4 - Our POST Request</h2>
+            <p>
+                Since we already did a lot of the background work for our POST
+                request, all we need is another async function that sends our
+                product list up to the API. We'll call this function
+                <code>saveAPIProducts</code>
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function saveAPIProducts() {
+
+}
+            </code></pre>
+            <p>
+                First, we'll add in our <code>fetch()</code> request. Inside the
+                request we have to state that our method will be POST, and that
+                the 'body' or data in the request will be a JSON conversion of
+                our <code>products</code>.
+            </p>
+            <p>
+                The
+                <code>headers</code> section is used for authentication among
+                other things. In our case, the API is expecting a secret code
+                before it lets us upload stuff. This is to prevent the API
+                getting unwanted traffic. We need to replace the
+                <code>"REPLACE_ME"</code> string with the real auth.
+                <b
+                    >To get the secret code, either ask a facilitator, or get it
+                    from a friend who already has it</b
+                >.
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function saveAPIProducts() {
+    <mark class="highlight">const formattedProducts = await formatRequestImages(products);</mark>
+    <mark class="highlight">const response = await fetch(API_URL, {</mark>
+        <mark class="highlight">method: "POST",</mark>
+        <mark class="highlight">body: ({ products: formattedProducts }),</mark>
+        <mark class="highlight">headers: {</mark>
+            <mark class="highlight">auth: "REPLACE_ME",</mark>
+            <mark class="highlight">"Content-type": "application/json"</mark>
+            <mark class="highlight">}</mark>
+        <mark class="highlight">});</mark>
+}
+            </code></pre>
+            <p>
+                After the API request we need to still await the response. Even
+                when using POST, you will get a response to let you know whether
+                or not the request was successful. Much like with the GET
+                request, we'll assign that JSON response to a variable called
+                <code>data</code>.
+            </p>
+            <p>
+                The API in our case returns the ID that your product list will
+                be stored under. We'll use <code>console.log()</code> to display
+                this within the developer console.
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+async function saveAPIProducts() {
+    const formattedProducts = await formatRequestImages(products);
+    const response = await fetch(API_URL, {
+        method: "POST",
+        body: JSON.stringify({ products: formattedProducts }),
+        headers: {
+            auth: "REPLACE_ME",
+            "Content-type": "application/json"
+        }
+    });
+
+    <mark class="highlight">const data = await response.json();</mark>
+    <mark class="highlight">console.log("Your ID is: " + data.id);</mark>
+}
+            </code></pre>
+            <p>
+                We're going to pop in some magic code to handle all the image
+                related activity. You don't need to understand this code at all,
+                but having this code is necessary for us to be able to send
+                images to our API for other people to get.
+            </p>
+            <p>
+                You can put this at the bottom of your JavaScript file, but
+                <b>you should not edit it</b>.
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+//!! MAGIC CODE NO TOUCHY !!//
+function toDataURL(url) {
+    return fetch(url)
+        .then((response) => (response.type === "cors" ? url : response.blob()))
+        .then(
+            (result) =>
+                new Promise((resolve, reject) => {
+                    if (typeof result === "string") return resolve(result);
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(result);
+                })
+        );
+}
+
+async function formatRequestImages(products) {
+    return await Promise.all(
+        products.map(
+            (product) =>
+                new Promise((resolve) => {
+                    toDataURL(product.image).then((processedImage) =>
+                        resolve({ ...product, image: processedImage }).catch(
+                            (err) => {
+                                console.log(err);
+                                resolve(product);
+                            }
+                    toDataURL(product.image)
+                        .then((processedImage) =>
+                            resolve({ ...product, image: processedImage })
+                        )
+                    );
+                        .catch((err) => {
+                            console.log(err);
+                            resolve(product);
+                        });
+                })
+        )
+    );
+}
+//!! END OF MAGIC CODE !!//
+            </code></pre>
+            <p>
+                When all your code is together, remember to
+                <b>save your code and refresh your browser</b>.
+            </p>
+            <p>
+                Unlike the GET request from earlier, our POST request is not
+                automatic. When you are ready to upload your list of products,
+                you can go into the developer console and simply type
+                "saveAPIProducts()" and press enter. If it was successful, it
+                should look like this:
+            </p>
+            <p>
+                INSERT IMAGE OF CONSOLE OUTPUT FOR SUCCESSFUL POST REQUEST HERE
+            </p>
+            <p class="callout info">
+                Shortcuts for Developer Console: Option + Command + J (on
+                macOS), or Shift + CTRL + J (on Windows/Linux)
+            </p>
+
+            <h3>Sharing Your Product List</h3>
+            <p>
+                If your POST request is working correctly, you should see this
+                ID displayed in your developer console. If you remember back to
+                our GET function, we're currently using the default ID to get a
+                set of products we left in the API for your testing purposes.
+                However, since we know the ID of a product list that has been
+                uploaded by us (or by a friend), we can change the ID in our GET
+                function to download a different product list!
+            </p>
+            <p>
+                All you need to do is change this highlighted ID in your JS code
+                to the ID of a product list uploaded by someone else:
+            </p>
+            <pre class="js"><code title="script.js" language="js">
+const PRODUCT_ID = "<mark>631712785011ab51ce90c614</mark>";
+
+            </code></pre>
+            <p>
+                You can test this out using your own ID that turns up on your
+                console, or by getting an ID from a friend.
+            </p>
+            <p class="callout success">
+                That's it, you're all done! You now know how to use an API
+                &#129302;
+            </p>
+        </section>
+        <hr />
+    </body>
+    <script src="../utils/lib/highlight.min.js"></script>
+    <script>
+        hljs.highlightAll();
+    </script>
+</html>
