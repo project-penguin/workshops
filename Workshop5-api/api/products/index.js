@@ -1,25 +1,30 @@
-import { checkAuth } from "../../util/auth"
+import express from "express"
 import { createProducts } from "../../controller/products"
-import { ipRateLimit } from "../../util/rate-limit/ip-rate-limit"
+import { checkAuth } from "../../util/auth"
+import rateLimit from "../../util/rate-limit"
+import app from "../../util/app"
+import errorHandler from "../../util/error"
+
+const router = express.Router()
+
+router.get("/", (req, res) => {
+    return res.status(404).json({ message: "Try adding an ID to your url: /api/products/62fa4be..." })
+})
+
+router.post("/", checkAuth, rateLimit, async (req, res, next) => {
+    if (!req.body || !req.body.products) return res.status(400).json({ message: "Could not read products, did you include your products in you request body?" })
+    try {
+        const id = await createProducts(req.body.products)
+    } catch(err) {
+        next(err)
+    }
+    return res.status(200).json({ id, message: "Successfully added products" })
+})
+
+app.use('/api/products', router)
+
+app.use(errorHandler)
 
 export default async function handler(req, res) {
-    try {
-        await ipRateLimit(req, res)
-        if (res.statusCode !== 200) return res
-        return await handlers[req.method](req, res)
-    } catch(err) {
-        return res.status(400).json({ message: err.message })
-    }
-}
-
-const handlers = {
-    GET(req, res) {
-        throw new Error('Try adding an ID to your url: /api/products/62fa4be...')
-    },
-    async POST(req, res) {
-        if (!checkAuth(req)) throw new Error('Failed to authenticate')
-        if (!req.body || !req.body.products) throw new Error('Could not read products')
-        const id = await createProducts(req.body.products)
-        return res.status(200).json({ id, message: "Successfully added products" })
-    }
+    return app.handle(req, res)
 }

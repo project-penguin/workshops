@@ -33,7 +33,7 @@ async function getProducts(id) {
 }
 
 async function createProducts(productList) {
-    if (typeof productList !== 'object') throw new Error('no')
+    if (typeof productList !== 'object') throw new Error('Unable to parse product list')
     const client = await clientPromise;
     const collection = client.db('db').collection('products');
     const result = await collection.insertOne({
