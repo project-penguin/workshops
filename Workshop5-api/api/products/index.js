@@ -15,10 +15,10 @@ router.post("/", checkAuth, rateLimit, async (req, res, next) => {
     if (!req.body || !req.body.products) return res.status(400).json({ message: "Could not read products, did you include your products in you request body?" })
     try {
         const id = await createProducts(req.body.products)
+        return res.status(200).json({ id, message: "Successfully added products" })
     } catch(err) {
         next(err)
     }
-    return res.status(200).json({ id, message: "Successfully added products" })
 })
 
 app.use('/api/products', router)
